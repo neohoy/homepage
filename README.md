@@ -31,7 +31,11 @@ python3 build.py
 | Cloudflare Pages | bitbuild.cc | 构建命令留空，输出目录 `dist` |
 | GitHub Pages | neohoy.github.io/homepage | `.github/workflows/deploy.yml` |
 
-自定义域名只能指向一个，给了 Cloudflare。GitHub Pages 那个当备用镜像。
+自定义域名只能指向一个，打算给 Cloudflare。GitHub Pages 那个当备用镜像。
+
+站点对外地址（canonical、og 卡片用）在 `build.py` 顶部的 `SITE` 常量里。
+bitbuild.cc 接上 Cloudflare 之后把它改成 `https://bitbuild.cc/`，重新构建即可。
+现在指向 GitHub Pages —— bitbuild.cc 还没解析到站上，canonical 不能指死链。
 
 ## 待补
 

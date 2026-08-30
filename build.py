@@ -13,6 +13,11 @@ import pathlib
 ROOT = pathlib.Path(__file__).parent
 ACCENT = '#3B7BE8'
 
+# 站点对外地址，用于 canonical 与 og/twitter 卡片。
+# bitbuild.cc 接上 Cloudflare Pages 之后，把这里改成 'https://bitbuild.cc/' 即可，
+# 全站的绝对地址都跟着走。结尾要带斜杠。
+SITE = 'https://neohoy.github.io/homepage/'
+
 SRC  = ROOT / 'design'
 DIST = ROOT / 'dist'
 DIST.mkdir(exist_ok=True)
@@ -180,15 +185,15 @@ html = f'''<!doctype html>
 <title>牛叔 neohoy — AI × 建筑科技 × 造物</title>
 <meta name="description" content="牛叔 / neohoy。AI × 建筑科技 × 造物，独立开发者、作者。BitBuild 建造观察局看行业，NEO 造物集做东西。Claude Code 中文教程与豆包工作手册作者。">
 <meta name="author" content="牛叔 neohoy">
-<link rel="canonical" href="https://bitbuild.cc/">
+<link rel="canonical" href="{SITE}">
 <meta property="og:type" content="website">
 <meta property="og:title" content="牛叔 neohoy — AI × 建筑科技 × 造物">
 <meta property="og:description" content="观察世界，也创造世界。BitBuild 建造观察局看行业，NEO 造物集做东西。">
-<meta property="og:image" content="banner.jpg">
-<meta property="og:url" content="https://bitbuild.cc/">
+<meta property="og:image" content="{SITE}banner.jpg">
+<meta property="og:url" content="{SITE}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@neohoy77">
-<meta name="twitter:image" content="banner.jpg">
+<meta name="twitter:image" content="{SITE}banner.jpg">
 <link rel="icon" href="{FAVICON}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
