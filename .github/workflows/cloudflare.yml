@@ -1,0 +1,33 @@
+name: Deploy to Cloudflare Pages
+
+# 需要两个仓库 secret 才会跑（Settings → Secrets and variables → Actions）：
+#   CLOUDFLARE_API_TOKEN   —— 权限选 "Cloudflare Pages: Edit"
+#   CLOUDFLARE_ACCOUNT_ID  —— Cloudflare 控制台右侧栏能看到
+# 没配 secret 时整个 job 直接跳过，不会让 CI 变红。
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: ${{ vars.CLOUDFLARE_ENABLED == 'true' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # dist/ 已入库，这里确认它没和 design/ 脱节
+      - name: Verify dist is in sync
+        run: |
+          python3 build.py
+          git diff --exit-code -- dist/ || {
+            echo "::error::dist/ 和 design/ 不同步。本地跑 python3 build.py 后重新提交。"
+            exit 1
+          }
+
+      - uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=homepage --branch=main
