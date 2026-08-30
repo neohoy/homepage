@@ -1,0 +1,837 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@600;900&family=JetBrains+Mono:wght@400;600&display=swap">
+  <style>
+    body { margin: 0; }
+    sc-if { display: contents; }
+    .page {
+      --bg: #0B1017;
+      --bg2: #101825;
+      --bg3: #16202F;
+      --paper: #F3F0E8;
+      --paper2: #FFFFFF;
+      --fg: #E9EDF3;
+      --fg2: #8E9BAE;
+      --fg3: #5D6B7E;
+      --line: rgba(146,168,200,0.16);
+      --line2: rgba(146,168,200,0.28);
+      --grid: rgba(120,155,210,0.075);
+      --ink: #101825;
+      --ink2: #46536A;
+      --warm: oklch(0.68 0.15 55);
+      --sans: "Noto Sans SC", -apple-system, "PingFang SC", "Hiragino Sans GB", sans-serif;
+      --serif: "Noto Serif SC", Georgia, "Songti SC", "SimSun", serif;
+      --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--sans);
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      text-wrap: pretty;
+    }
+    .page.paper {
+      --bg: #F2EFE7;
+      --bg2: #FBFAF6;
+      --bg3: #FFFFFF;
+      --paper: #FFFFFF;
+      --paper2: #FBFAF6;
+      --fg: #121A25;
+      --fg2: #55606F;
+      --fg3: #808B99;
+      --line: rgba(18,26,37,0.13);
+      --line2: rgba(18,26,37,0.22);
+      --grid: rgba(30,60,110,0.06);
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--fg); }
+    .grid-bg {
+      background-image:
+        linear-gradient(to right, var(--grid) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+      background-size: 46px 46px;
+    }
+    .mono { font-family: var(--mono); letter-spacing: 0.18em; text-transform: uppercase; }
+    .serif { font-family: var(--serif); }
+
+    /* nav */
+    .navlink { position: relative; padding: 6px 0; color: var(--fg2); font-size: 13px; cursor: pointer; transition: color .18s; }
+    .navlink:hover { color: var(--fg); }
+    .navlink::after { content: ""; position: absolute; left: 0; right: 100%; bottom: 0; height: 1px; background: var(--accent); transition: right .25s ease; }
+    .navlink:hover::after { right: 0; }
+
+    /* buttons */
+    .btn { display: inline-flex; align-items: center; gap: 10px; height: 46px; padding: 0 22px; border-radius: 2px; font-size: 14px; font-weight: 500; cursor: pointer; transition: transform .18s, background .18s, border-color .18s, color .18s; border: 1px solid transparent; }
+    .btn:active { transform: translateY(1px); }
+    .btn-solid { background: var(--accent); color: #fff; }
+    .btn-solid:hover { filter: brightness(1.12); }
+    .btn-ghost { border-color: var(--line2); color: var(--fg); background: transparent; }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* chips */
+    .chip { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; padding: 8px 15px; border: 1px solid var(--line); color: var(--fg3); border-radius: 2px; cursor: pointer; background: transparent; transition: all .18s; }
+    .chip:hover { border-color: var(--line2); color: var(--fg2); }
+    .chip.on { border-color: var(--accent); color: var(--accent); background: color-mix(in oklab, var(--accent) 10%, transparent); }
+
+    /* tabs */
+    .tab { display: flex; flex-direction: column; gap: 5px; padding: 16px 20px 15px; border-top: 2px solid transparent; cursor: pointer; transition: all .2s; flex: 1; text-align: left; }
+    .tab:hover { background: color-mix(in oklab, var(--fg) 4%, transparent); }
+    .tab.on { border-top-color: var(--accent); background: color-mix(in oklab, var(--accent) 8%, transparent); }
+
+    /* cards */
+    .card { border: 1px solid var(--line); background: var(--bg2); border-radius: 3px; overflow: hidden; transition: border-color .25s, transform .25s; }
+    .card:hover { border-color: var(--line2); transform: translateY(-3px); }
+    .card:hover .shot { transform: scale(1.015); }
+    .shot { transition: transform .5s cubic-bezier(.2,.7,.3,1); }
+    .arrow { transition: transform .25s; display: inline-block; }
+    .card:hover .arrow { transform: translateX(5px); }
+
+    .linkrow { display: flex; align-items: center; justify-content: space-between; padding: 19px 22px; border: 1px solid var(--line); border-radius: 3px; background: var(--bg2); cursor: pointer; transition: border-color .2s, background .2s; }
+    .linkrow:hover { border-color: var(--accent); background: var(--bg3); }
+    .dashed { border: 1px dashed var(--line2); }
+    .ph { font-family: var(--mono); font-size: 10px; letter-spacing: .1em; color: var(--warm); border: 1px dashed color-mix(in oklab, var(--warm) 45%, transparent); padding: 1px 6px; border-radius: 2px; white-space: nowrap; }
+  </style>
+</helmet>
+
+<div class="page {{themeClass}}" style="--accent: {{accent}}; width: 100%; min-height: 100%;">
+
+  <!-- ══════════ NAV ══════════ -->
+  <div style="position: sticky; top: 0; z-index: 40; background: color-mix(in oklab, var(--bg) 86%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 48px; height: 68px; display: flex; align-items: center; justify-content: space-between;">
+      <div style="display: flex; align-items: center; gap: 12px; cursor: pointer;" onClick="{{go.top}}">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="square">
+          <path d="M3 21h18"/><path d="M6 21V9l6-4.5L18 9v12"/><path d="M10 21v-6h4v6"/><path d="M12 4.5V2"/>
+        </svg>
+        <span class="mono" style="font-size: 12px; letter-spacing: .22em; color: var(--fg);">NEOHOY</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 34px;">
+        <div class="navlink" onClick="{{go.works}}">作品</div>
+        <div class="navlink" onClick="{{go.content}}">内容</div>
+        <div class="navlink" onClick="{{go.contact}}">联系</div>
+        <div class="btn btn-ghost" style="height: 36px; padding: 0 16px; font-size: 13px;" onClick="{{go.contact}}">
+          <span>合作</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ HERO ══════════ -->
+  <div id="top" class="grid-bg" style="position: relative; border-bottom: 1px solid var(--line);">
+    <div style="position: absolute; inset: 0; background: radial-gradient(120% 80% at 12% 0%, color-mix(in oklab, var(--accent) 12%, transparent) 0%, transparent 62%); pointer-events: none;"></div>
+    <div style="max-width: 1200px; margin: 0 auto; padding: 56px 48px 84px; position: relative;">
+
+      <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 30px;">
+        <span style="width: 5px; height: 5px; background: var(--accent); display: block;"></span>
+        <span class="mono" style="font-size: 10.5px; color: var(--fg3);">BITBUILD 建造观察局 &nbsp;/&nbsp; NEO 造物集</span>
+        <span style="flex: 1; height: 1px; background: var(--line);"></span>
+        <span class="mono" style="font-size: 10.5px; color: var(--fg3);">SINCE 2026</span>
+      </div>
+
+      <!-- ── banner plate + avatar ── -->
+      <div style="position: relative;">
+        <div style="position: absolute; top: -10px; left: -10px; width: 22px; height: 22px; border-left: 1px solid var(--accent); border-top: 1px solid var(--accent); opacity: .6; z-index: 2;"></div>
+        <div style="position: absolute; top: -10px; right: -10px; width: 22px; height: 22px; border-right: 1px solid var(--accent); border-top: 1px solid var(--accent); opacity: .6; z-index: 2;"></div>
+
+        <div style="background: var(--paper); border: 1px solid var(--line2); border-radius: 3px; overflow: hidden;">
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-bottom: 1px solid rgba(20,35,60,0.1);">
+            <span class="mono" style="font-size: 9.5px; color: #7C8798;">DWG · OBSERVE-THINK-BUILD · BANNER</span>
+            <span class="mono" style="font-size: 9.5px; color: #7C8798;">SCALE 1:1</span>
+          </div>
+          <img src="banner.jpg" alt="OBSERVE THINK BUILD · 观察世界，也创造世界。" style="display: block; width: 100%; height: auto; background: #FFFFFF;">
+        </div>
+
+        <div style="position: absolute; left: 28px; bottom: -58px; width: 148px; height: 148px; border-radius: 50%; overflow: hidden; border: 4px solid var(--bg); background: #fff; box-shadow: 0 14px 36px rgba(0,0,0,0.45); z-index: 3;">
+          <img src="avatar.jpg" alt="牛叔" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+      </div>
+
+      <!-- ── name ── -->
+      <div style="padding-left: 206px; margin-top: 26px;">
+        <div style="display: flex; align-items: baseline; gap: 18px;">
+          <h1 class="serif" style="margin: 0; font-size: 76px; font-weight: 900; line-height: 1; letter-spacing: -0.01em; color: var(--fg);">牛叔</h1>
+          <span class="serif" style="font-size: 50px; font-weight: 600; line-height: 1; color: var(--accent); font-style: italic;">neohoy.</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; margin-top: 16px; color: var(--fg2); font-size: 14px;">
+          <span>AI × 建筑科技 × 造物</span>
+          <span style="color: var(--fg3);">·</span>
+          <span>独立开发者</span>
+          <span style="color: var(--fg3);">·</span>
+          <span>作者</span>
+        </div>
+      </div>
+
+      <div style="height: 1px; background: var(--line); margin: 46px 0 44px;"></div>
+
+      <div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.06fr); gap: 88px; align-items: start;">
+        <div>
+          <p class="serif" style="margin: 0; font-size: 54px; font-weight: 900; line-height: 1.3; color: var(--fg);">观察世界，<br>也创造世界。</p>
+          <div style="display: flex; gap: 14px; margin-top: 44px;">
+            <div class="btn btn-solid" onClick="{{go.works}}">
+              <span>看我做的东西</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </div>
+            <div class="btn btn-ghost" onClick="{{go.content}}">读内容</div>
+          </div>
+        </div>
+
+        <div style="padding-top: 6px;">
+          <div style="border-left: 2px solid var(--accent); padding-left: 28px; margin-bottom: 38px;">
+            <p class="serif" style="margin: 0; font-size: 28px; font-weight: 600; line-height: 1.72; color: var(--fg);">「凡是我造不出来的，<br>我就还没真正懂它。」</p>
+            <div class="mono" style="font-size: 10.5px; color: var(--fg3); margin-top: 18px;">RICHARD FEYNMAN · 理查德·费曼</div>
+          </div>
+          <p style="margin: 0 0 18px; font-size: 16.5px; line-height: 2.05; color: var(--fg2);">我想做的就这一件事。把看懂的东西造出来，再把造的过程写下来。</p>
+          <p style="margin: 0; font-size: 16.5px; line-height: 2.05; color: var(--fg); font-weight: 500;">坚持的也只有一条。先自己做一遍，再开口。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════ METRICS ══════════ -->
+  <div style="border-bottom: 1px solid var(--line); background: var(--bg2);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 48px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));">
+      <div style="padding: 34px 30px 34px 0; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 9px;">
+        <span class="mono" style="font-size: 10px; color: var(--fg3);">REEL 01</span>
+        <span class="serif" style="font-size: 40px; font-weight: 900; line-height: 1; color: var(--fg);">4<span style="font-size: 17px; font-weight: 600; margin-left: 4px; color: var(--fg2);">件</span></span>
+        <span style="font-size: 12.5px; color: var(--fg2);">在跑的作品</span>
+      </div>
+      <div style="padding: 34px 30px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 9px;">
+        <span class="mono" style="font-size: 10px; color: var(--fg3);">REEL 02</span>
+        <span class="serif" style="font-size: 40px; font-weight: 900; line-height: 1; color: var(--fg);">3000<span style="font-size: 24px; font-weight: 600; color: var(--accent);">+</span></span>
+        <span style="font-size: 12.5px; color: var(--fg2);">公众号读者</span>
+      </div>
+      <div style="padding: 34px 30px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 9px;">
+        <span class="mono" style="font-size: 10px; color: var(--fg3);">REEL 03</span>
+        <span class="serif" style="font-size: 40px; font-weight: 900; line-height: 1; color: var(--fg);">100<span style="font-size: 24px; font-weight: 600; color: var(--accent);">+</span></span>
+        <span style="font-size: 12.5px; color: var(--fg2);">GitHub Stars</span>
+      </div>
+      <div style="padding: 34px 0 34px 30px; display: flex; flex-direction: column; gap: 9px;">
+        <span class="mono" style="font-size: 10px; color: var(--fg3);">REEL 04</span>
+        <span class="serif" style="font-size: 40px; font-weight: 900; line-height: 1; color: var(--fg);">3<span style="font-size: 17px; font-weight: 600; margin-left: 4px; color: var(--fg2);">语言</span></span>
+        <span style="font-size: 12.5px; color: var(--fg2);">简体 / 繁體 / English 全量</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ EPIGRAPH ══════════ -->
+  <div class="grid-bg" style="border-bottom: 1px solid var(--line);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 92px 48px; text-align: center;">
+      <div class="mono" style="font-size: 10.5px; color: var(--fg3); margin-bottom: 34px;">— EPIGRAPH · 卷首语 —</div>
+      <p class="serif" style="margin: 0 auto; max-width: 21em; font-size: 30px; font-weight: 600; line-height: 1.68; color: var(--fg);">「一个想法从看见到能用，中间隔着的从来不是灵感，<br>是把它做完的那些晚上。」</p>
+      <div class="mono" style="font-size: 10.5px; color: var(--fg3); margin-top: 34px;">牛叔 · 2026</div>
+    </div>
+  </div>
+
+
+  <!-- ══════════ 01 · SELECTED WORKS ══════════ -->
+  <div id="works" style="border-bottom: 1px solid var(--line);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 96px 48px 104px;">
+
+      <div style="display: flex; align-items: baseline; gap: 20px; margin-bottom: 18px;">
+        <span class="mono" style="font-size: 11px; color: var(--accent);">01</span>
+        <span style="width: 48px; height: 1px; background: var(--line2); align-self: center;"></span>
+        <span class="mono" style="font-size: 11px; color: var(--fg3);">SELECTED WORKS</span>
+      </div>
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 60px; margin-bottom: 46px;">
+        <div style="max-width: 46ch;">
+          <h2 class="serif" style="margin: 0 0 18px; font-size: 46px; font-weight: 900; line-height: 1.18; color: var(--fg);">先做出来，再讲道理。</h2>
+          <p style="margin: 0; font-size: 15px; line-height: 1.85; color: var(--fg2);">这里只放跑得起来、打得开、能被别人拿去用的东西。每一件都对应一个我自己真实遇到过的问题。</p>
+        </div>
+        <div style="display: flex; gap: 9px; flex-shrink: 0; padding-bottom: 6px;">
+          <div class="chip {{sel.all}}" onClick="{{pick.all}}">全部</div>
+          <div class="chip {{sel.book}}" onClick="{{pick.book}}">教程站</div>
+          <div class="chip {{sel.media}}" onClick="{{pick.media}}">内容</div>
+          <div class="chip {{sel.make}}" onClick="{{pick.make}}">造物</div>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 26px;">
+
+        <!-- ── 01 claudebook : 文左 图右 ── -->
+        <sc-if value="{{show.book}}" hint-placeholder-val="{{ true }}">
+        <div class="card" style="display: grid; grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);">
+          <div style="padding: 44px 44px 40px; display: flex; flex-direction: column;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 26px;">
+              <span class="mono" style="font-size: 10px; color: var(--accent);">WORK · 01</span>
+              <span style="width: 26px; height: 1px; background: var(--line2);"></span>
+              <span class="mono" style="font-size: 10px; color: var(--fg3);">教程站 · 开源</span>
+            </div>
+            <h3 style="margin: 0 0 6px; font-size: 30px; font-weight: 700; line-height: 1.3; color: var(--fg);">Claude Code 中文教程</h3>
+            <div class="mono" style="font-size: 11px; color: var(--fg3); margin-bottom: 20px;">CLAUDEBOOK</div>
+            <p style="margin: 0 0 16px; font-size: 14.5px; line-height: 1.88; color: var(--fg2);">官方文档写得不差，缺的不是翻译，是<strong style="color: var(--fg); font-weight: 500;">顺序</strong>。190 篇按主题平铺，新人打开不知道从哪读起。这个站把同一批内容按「先能用、再用好、然后扩展、最后带团队」重排一遍，官方目录原样留着，谁都不耽误。</p>
+            <p style="margin: 0 0 28px; font-size: 13px; line-height: 1.8; color: var(--fg3);">5 站 17 篇学习路线 · 190 篇官方文档全量 · 社区批注不会被上游覆盖 · 一个字都没经过机器翻译。</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 30px;">
+              <span class="chip" style="cursor: default; pointer-events: none;">简 · 繁 · EN</span>
+              <span class="chip" style="cursor: default; pointer-events: none;">⌘K 全文搜索</span>
+              <span class="chip" style="cursor: default; pointer-events: none;">社区共写</span>
+            </div>
+            <span style="flex: 1;"></span>
+            <div style="display: flex; align-items: center; gap: 26px;">
+              <a href="https://claudebook-e38.pages.dev/" target="_blank" style="display: inline-flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 500;">在线阅读 <span class="arrow">→</span></a>
+              <a href="https://github.com/neohoy/claudebook" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--fg2);">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.4.5 0 5.9 0 12.5c0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.2 4.7 18.2 5 18.2 5c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 24 12.5C24 5.9 18.6.5 12 .5z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+          <div style="background: var(--bg3); border-left: 1px solid var(--line); padding: 36px 36px 0; display: flex; align-items: flex-end; overflow: hidden;">
+            <div class="shot" style="width: 100%; background: #1A1512; border: 1px solid rgba(255,255,255,0.09); border-radius: 5px 5px 0 0; overflow: hidden; box-shadow: 0 18px 44px rgba(0,0,0,0.4);">
+              <div style="display: flex; align-items: center; gap: 7px; padding: 9px 12px; background: #221B16; border-bottom: 1px solid rgba(255,255,255,0.07);">
+                <span style="width: 8px; height: 8px; border-radius: 50%; background: #E06C55;"></span>
+                <span style="width: 8px; height: 8px; border-radius: 50%; background: #E0B355;"></span>
+                <span style="width: 8px; height: 8px; border-radius: 50%; background: #6BBF6B;"></span>
+                <span style="flex: 1;"></span>
+                <span style="font-family: var(--mono); font-size: 8px; color: rgba(255,255,255,0.32); letter-spacing: .04em; text-transform: none;">claudebook-e38.pages.dev</span>
+                <span style="flex: 1;"></span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; border-bottom: 1px solid rgba(255,255,255,0.07);">
+                <span style="font-size: 10px; font-weight: 700; color: #F5EFE8;">Claude Code 中文教程</span>
+                <span style="width: 88px; height: 17px; border-radius: 3px; background: rgba(255,255,255,0.07);"></span>
+                <span style="flex: 1;"></span>
+                <span style="font-size: 8px; color: rgba(255,255,255,0.4);">学习路线</span>
+                <span style="font-size: 8px; color: rgba(255,255,255,0.4);">文档</span>
+                <span style="padding: 3px 8px; border-radius: 3px; background: #D9743A; font-size: 8px; color: #fff; font-weight: 600;">简中</span>
+              </div>
+              <div style="padding: 30px 26px 24px;">
+                <div style="font-family: var(--mono); font-size: 7.5px; letter-spacing: .2em; color: rgba(255,255,255,0.3); margin-bottom: 14px;">STA 01 · 装上 → 用好 → 扩展</div>
+                <div style="font-size: 27px; font-weight: 800; line-height: 1.24; color: #FBF7F2; letter-spacing: -0.01em;">把 Claude Code<br>真正用起来</div>
+                <div style="font-size: 9px; line-height: 1.75; color: rgba(255,255,255,0.42); margin-top: 13px; max-width: 30em;">不是机器翻译的官方原文，也不只是照抄官方目录。而是一步一步从装不上，到能带团队用。</div>
+                <div style="display: flex; gap: 8px; margin-top: 18px;">
+                  <span style="padding: 6px 12px; border-radius: 3px; background: #D9743A; font-size: 8.5px; color: #fff; font-weight: 600;">10 分钟跑通第一个任务</span>
+                  <span style="padding: 6px 12px; border-radius: 3px; border: 1px solid rgba(255,255,255,0.16); font-size: 8.5px; color: rgba(255,255,255,0.65);">先看学习路线</span>
+                </div>
+              </div>
+              <div style="display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(255,255,255,0.07);">
+                <div style="padding: 13px 14px; border-right: 1px solid rgba(255,255,255,0.07); display: flex; flex-direction: column; gap: 5px;">
+                  <span style="font-size: 8px; color: #F5EFE8; font-weight: 600;">官方原文</span>
+                  <span style="height: 3px; width: 70%; background: rgba(255,255,255,0.1); border-radius: 2px;"></span>
+                  <span style="height: 3px; width: 46%; background: rgba(255,255,255,0.1); border-radius: 2px;"></span>
+                </div>
+                <div style="padding: 13px 14px; border-right: 1px solid rgba(255,255,255,0.07); display: flex; flex-direction: column; gap: 5px;">
+                  <span style="font-size: 8px; color: #F5EFE8; font-weight: 600;">两套导航</span>
+                  <span style="height: 3px; width: 78%; background: rgba(255,255,255,0.1); border-radius: 2px;"></span>
+                  <span style="height: 3px; width: 40%; background: rgba(255,255,255,0.1); border-radius: 2px;"></span>
+                </div>
+                <div style="padding: 13px 14px; border-right: 1px solid rgba(255,255,255,0.07); display: flex; flex-direction: column; gap: 5px;">
+                  <span style="font-size: 8px; color: #F5EFE8; font-weight: 600;">三种语言</span>
+                  <span style="height: 3px; width: 62%; background: rgba(255,255,255,0.1); border-radius: 2px;"></span>
+                  <span style="height: 3px; width: 52%; background: rgba(255,255,255,0.1); border-radius: 2px;"></span>
+                </div>
+                <div style="padding: 13px 14px; display: flex; flex-direction: column; gap: 5px;">
+                  <span style="font-size: 8px; color: #F5EFE8; font-weight: 600;">可批注</span>
+                  <span style="height: 3px; width: 74%; background: rgba(255,255,255,0.1); border-radius: 2px;"></span>
+                  <span style="height: 3px; width: 36%; background: rgba(255,255,255,0.1); border-radius: 2px;"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </sc-if>
+
+        <!-- ── 02 doubaobook : 图左 文右 ── -->
+        <sc-if value="{{show.book}}" hint-placeholder-val="{{ true }}">
+        <div class="card" style="display: grid; grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr);">
+          <div style="background: var(--bg3); border-right: 1px solid var(--line); padding: 36px 36px 0; display: flex; align-items: flex-end; overflow: hidden;">
+            <div class="shot" style="width: 100%; background: #FFFFFF; border: 1px solid rgba(0,0,0,0.09); border-radius: 5px 5px 0 0; overflow: hidden; box-shadow: 0 18px 44px rgba(0,0,0,0.32);">
+              <div style="display: flex; align-items: center; gap: 10px; padding: 10px 15px; border-bottom: 1px solid rgba(0,0,0,0.07);">
+                <span style="width: 14px; height: 14px; border-radius: 3px; background: #3B7BE8;"></span>
+                <span style="font-size: 9.5px; font-weight: 700; color: #1B2430;">豆包工作手册</span>
+                <span style="flex: 1;"></span>
+                <span style="font-size: 8px; color: #7A8492;">快速上手</span>
+                <span style="font-size: 8px; color: #7A8492;">进阶教程</span>
+                <span style="font-size: 8px; color: #7A8492;">实战案例</span>
+                <span style="font-size: 8px; color: #7A8492;">参考</span>
+                <span style="width: 52px; height: 15px; border-radius: 3px; background: rgba(0,0,0,0.05);"></span>
+              </div>
+              <div style="display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 18px; padding: 30px 26px 24px; align-items: center;">
+                <div style="display: flex; flex-direction: column; gap: 9px;">
+                  <div style="font-size: 25px; font-weight: 800; line-height: 1.2; color: #1B2430;">豆包工作手册</div>
+                  <div style="font-size: 13px; font-weight: 600; color: #3B7BE8; line-height: 1.35;">把办公 Agent 真正用进日常工作</div>
+                  <div style="font-size: 8.5px; line-height: 1.75; color: #6B7684;">一站式掌握界面、技能、连接器、云电脑与飞书原生打通。从 10 分钟跑通第一个任务，到把每次成功沉淀成团队能复用的工作系统。</div>
+                  <div style="display: flex; gap: 7px; margin-top: 6px;">
+                    <span style="padding: 6px 12px; border-radius: 16px; background: #3B7BE8; font-size: 8px; color: #fff; font-weight: 600;">从快速上手开始</span>
+                    <span style="padding: 6px 12px; border-radius: 16px; background: rgba(0,0,0,0.05); font-size: 8px; color: #46536A;">浏览实战案例</span>
+                  </div>
+                </div>
+                <div style="aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 34% 30%, #7FB0FF, #2F62C4 72%); opacity: .92;"></div>
+              </div>
+              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 0 26px 24px;">
+                <div style="padding: 12px; border-radius: 6px; background: #F4F6FA; display: flex; flex-direction: column; gap: 5px;">
+                  <span style="font-size: 8px; font-weight: 700; color: #1B2430;">先讲清楚每个按钮在决定什么</span>
+                  <span style="height: 3px; width: 88%; background: rgba(0,0,0,0.08); border-radius: 2px;"></span>
+                  <span style="height: 3px; width: 58%; background: rgba(0,0,0,0.08); border-radius: 2px;"></span>
+                </div>
+                <div style="padding: 12px; border-radius: 6px; background: #F4F6FA; display: flex; flex-direction: column; gap: 5px;">
+                  <span style="font-size: 8px; font-weight: 700; color: #1B2430;">飞书账号登录是天花板</span>
+                  <span style="height: 3px; width: 76%; background: rgba(0,0,0,0.08); border-radius: 2px;"></span>
+                  <span style="height: 3px; width: 64%; background: rgba(0,0,0,0.08); border-radius: 2px;"></span>
+                </div>
+                <div style="padding: 12px; border-radius: 6px; background: #F4F6FA; display: flex; flex-direction: column; gap: 5px;">
+                  <span style="font-size: 8px; font-weight: 700; color: #1B2430;">案例给到可复制的提示词</span>
+                  <span style="height: 3px; width: 82%; background: rgba(0,0,0,0.08); border-radius: 2px;"></span>
+                  <span style="height: 3px; width: 48%; background: rgba(0,0,0,0.08); border-radius: 2px;"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="padding: 44px 44px 40px; display: flex; flex-direction: column;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 26px;">
+              <span class="mono" style="font-size: 10px; color: var(--accent);">WORK · 02</span>
+              <span style="width: 26px; height: 1px; background: var(--line2);"></span>
+              <span class="mono" style="font-size: 10px; color: var(--fg3);">教程站 · 开源</span>
+            </div>
+            <h3 style="margin: 0 0 6px; font-size: 30px; font-weight: 700; line-height: 1.3; color: var(--fg);">豆包工作手册</h3>
+            <div class="mono" style="font-size: 11px; color: var(--fg3); margin-bottom: 20px;">DOUBAOBOOK</div>
+            <p style="margin: 0 0 16px; font-size: 14.5px; line-height: 1.88; color: var(--fg2);">37 篇：8 篇上手、10 篇进阶、15 个实战案例。每个案例走同一条线——速览 → 场景 → 提示词 → 为什么这么写 → 验收清单 → 变体 → 坑，提示词整段可复制。</p>
+            <p style="margin: 0 0 28px; font-size: 13px; line-height: 1.8; color: var(--fg3);">所有结论尽量落到来源，产品限制单独标出来。写手册最怕的是让人照着做完发现跑不通。</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 30px;">
+              <span class="chip" style="cursor: default; pointer-events: none;">15 个实战案例</span>
+              <span class="chip" style="cursor: default; pointer-events: none;">提示词模板库</span>
+              <span class="chip" style="cursor: default; pointer-events: none;">VitePress</span>
+            </div>
+            <span style="flex: 1;"></span>
+            <a href="https://github.com/neohoy/doubaobook" target="_blank" style="display: inline-flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 500;">查看手册 <span class="arrow">→</span></a>
+          </div>
+        </div>
+        </sc-if>
+
+        <!-- ── 03 bitbuild : 文左 图右 ── -->
+        <sc-if value="{{show.media}}" hint-placeholder-val="{{ true }}">
+        <div class="card" style="display: grid; grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);">
+          <div style="padding: 44px 44px 40px; display: flex; flex-direction: column;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 26px;">
+              <span class="mono" style="font-size: 10px; color: var(--accent);">WORK · 03</span>
+              <span style="width: 26px; height: 1px; background: var(--line2);"></span>
+              <span class="mono" style="font-size: 10px; color: var(--fg3);">公众号 · 持续更新</span>
+            </div>
+            <h3 style="margin: 0 0 6px; font-size: 30px; font-weight: 700; line-height: 1.3; color: var(--fg);">BitBuild 建造观察局</h3>
+            <div class="mono" style="font-size: 11px; color: var(--fg3); margin-bottom: 20px;">OBSERVE THE INDUSTRY</div>
+            <p style="margin: 0 0 16px; font-size: 14.5px; line-height: 1.88; color: var(--fg2);">看行业，看趋势，看未来。建筑与科技交界处正在发生的事，不写通稿，只写我确认过的部分——包括哪些看起来很美但现在还不成立。</p>
+            <p style="margin: 0 0 28px; font-size: 13px; line-height: 1.8; color: var(--fg3);">不追热点，只写能放半年还成立的东西。判断错了就在后面那篇里认。</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 30px;">
+              <span class="chip" style="cursor: default; pointer-events: none;">建筑观察</span>
+              <span class="chip" style="cursor: default; pointer-events: none;">AI 工具</span>
+              <span class="chip" style="cursor: default; pointer-events: none;">趋势判断</span>
+              <span class="chip" style="cursor: default; pointer-events: none;">适老 &amp; 生活</span>
+            </div>
+            <span style="flex: 1;"></span>
+            <div style="display: inline-flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 500; color: var(--accent); cursor: pointer;">微信搜「BitBuild 建造观察局」 <span class="arrow">→</span></div>
+          </div>
+          <div style="background: var(--bg3); border-left: 1px solid var(--line); padding: 36px 36px 0; display: flex; align-items: flex-end; overflow: hidden;">
+            <div class="shot" style="width: 100%; background: #FFFFFF; border: 1px solid rgba(0,0,0,0.09); border-radius: 5px 5px 0 0; overflow: hidden; box-shadow: 0 18px 44px rgba(0,0,0,0.32);">
+              <div style="display: flex; align-items: center; gap: 11px; padding: 14px 17px; border-bottom: 1px solid rgba(0,0,0,0.06);">
+                <div style="width: 34px; height: 34px; border-radius: 6px; background: #1E3E78; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8FB6FF" stroke-width="1.5" stroke-linecap="square"><path d="M3 21h18"/><path d="M6 21V9l6-4.5L18 9v12"/><path d="M10 21v-6h4v6"/></svg>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 3px;">
+                  <span style="font-size: 11px; font-weight: 700; color: #1B2430;">BitBuild 建造观察局</span>
+                  <span style="font-size: 8px; color: #8A939F;">看行业，看趋势，看未来。</span>
+                </div>
+                <span style="flex: 1;"></span>
+                <span style="padding: 6px 13px; border-radius: 4px; background: #07C160; font-size: 8.5px; color: #fff; font-weight: 600;">关注</span>
+              </div>
+              <div style="display: flex; gap: 12px; padding: 14px 17px; border-bottom: 1px solid rgba(0,0,0,0.05);">
+                <div style="flex: 1; display: flex; flex-direction: column; gap: 6px;">
+                  <span style="font-size: 9.5px; font-weight: 600; color: #1B2430; line-height: 1.4;">AI 进工地这件事，被高估也被低估</span>
+                  <span style="height: 2.5px; width: 92%; background: rgba(0,0,0,0.07); border-radius: 2px;"></span>
+                  <span style="height: 2.5px; width: 64%; background: rgba(0,0,0,0.07); border-radius: 2px;"></span>
+                  <span style="font-size: 7px; color: #A6AEB8; margin-top: 2px;">建造观察 · 3 天前</span>
+                </div>
+                <div style="width: 68px; height: 50px; border-radius: 4px; background: linear-gradient(135deg, #DDE6F5, #B9CCEC); flex-shrink: 0;"></div>
+              </div>
+              <div style="display: flex; gap: 12px; padding: 14px 17px; border-bottom: 1px solid rgba(0,0,0,0.05);">
+                <div style="flex: 1; display: flex; flex-direction: column; gap: 6px;">
+                  <span style="font-size: 9.5px; font-weight: 600; color: #1B2430; line-height: 1.4;">我用 Agent 重做了一遍投标流程</span>
+                  <span style="height: 2.5px; width: 86%; background: rgba(0,0,0,0.07); border-radius: 2px;"></span>
+                  <span style="height: 2.5px; width: 52%; background: rgba(0,0,0,0.07); border-radius: 2px;"></span>
+                  <span style="font-size: 7px; color: #A6AEB8; margin-top: 2px;">AI 工具 · 上周</span>
+                </div>
+                <div style="width: 68px; height: 50px; border-radius: 4px; background: linear-gradient(135deg, #E8E2D6, #CFC5B2); flex-shrink: 0;"></div>
+              </div>
+              <div style="display: flex; gap: 12px; padding: 14px 17px;">
+                <div style="flex: 1; display: flex; flex-direction: column; gap: 6px;">
+                  <span style="font-size: 9.5px; font-weight: 600; color: #1B2430; line-height: 1.4;">给爸妈做的那把椅子，改到第六版</span>
+                  <span style="height: 2.5px; width: 90%; background: rgba(0,0,0,0.07); border-radius: 2px;"></span>
+                  <span style="height: 2.5px; width: 58%; background: rgba(0,0,0,0.07); border-radius: 2px;"></span>
+                  <span style="font-size: 7px; color: #A6AEB8; margin-top: 2px;">造物实验 · 2 周前</span>
+                </div>
+                <div style="width: 68px; height: 50px; border-radius: 4px; background: linear-gradient(135deg, #DCE9E1, #B4CDBF); flex-shrink: 0;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </sc-if>
+
+        <!-- ── 04 NEO 造物集 : 图左 文右 ── -->
+        <sc-if value="{{show.make}}" hint-placeholder-val="{{ true }}">
+        <div class="card" style="display: grid; grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr);">
+          <div class="grid-bg" style="border-right: 1px solid var(--line); background-color: var(--paper); display: flex; align-items: center; justify-content: center; padding: 40px;">
+            <svg viewBox="0 0 400 300" style="width: 100%; height: auto;">
+              <g stroke="#2F62C4" fill="none" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round">
+                <path d="M60 250v-70h72v70M60 210h72M72 250v-40M120 250v-40M62 180l34-34 34 34"/>
+                <rect x="176" y="118" width="70" height="70" rx="3"/>
+                <rect x="192" y="134" width="38" height="38" rx="2"/>
+                <path d="M198 118v-14M224 118v-14M198 188v14M224 188v14M176 140h-14M176 166h-14M246 140h14M246 166h14"/>
+                <path d="M300 250v-52a26 26 0 0 1 52 0M300 250h52M308 250v-16M344 250v-16M306 198v-24"/>
+                <path d="M96 100c0-16 12-28 28-28M124 72l-8-8M124 72l8-8"/>
+                <circle cx="326" cy="120" r="20"/>
+                <path d="M318 120h16M326 112v16"/>
+              </g>
+              <text x="211" y="160" text-anchor="middle" fill="#2F62C4" font-family="monospace" font-size="10" font-weight="700">AI</text>
+              <g stroke="rgba(40,80,150,0.35)" stroke-width="1" fill="none" stroke-dasharray="4 5">
+                <path d="M132 215h44M246 153h54M211 202v34M211 236h-79M211 236h89M300 236v-14"/>
+              </g>
+              <g fill="rgba(40,80,150,0.55)" font-family="monospace" font-size="8.5" letter-spacing="1.2">
+                <text x="96" y="278" text-anchor="middle">SHELTER</text>
+                <text x="211" y="278" text-anchor="middle">AGENT</text>
+                <text x="326" y="278" text-anchor="middle">FURNITURE</text>
+              </g>
+              <path d="M40 262h320" stroke="rgba(40,80,150,0.28)" stroke-width="1"/>
+            </svg>
+          </div>
+          <div style="padding: 44px 44px 42px; display: flex; flex-direction: column;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 26px;">
+              <span class="mono" style="font-size: 10px; color: var(--accent);">WORK · 04</span>
+              <span style="width: 26px; height: 1px; background: var(--line2);"></span>
+              <span class="mono" style="font-size: 10px; color: var(--fg3);">造物 · 长期进行中</span>
+            </div>
+            <h3 style="margin: 0 0 6px; font-size: 30px; font-weight: 700; line-height: 1.3; color: var(--fg);">NEO 造物集</h3>
+            <div class="mono" style="font-size: 11px; color: var(--fg3); margin-bottom: 20px;">想到，就造。</div>
+            <p style="margin: 0 0 26px; font-size: 14.5px; line-height: 1.88; color: var(--fg2);">不是产品线，是一条自留地。AI 工具、Agent、文创、适老、儿童玩具——凡是我自己或家里人真的会用的东西，就做出来试试。做坏的那些也留在里面，它们通常比做成的更值得写。</p>
+            <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;">
+              <div style="display: flex; align-items: center; gap: 11px; padding: 13px 15px; border: 1px solid var(--line); border-radius: 3px;">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9zM9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg>
+                <span style="font-size: 13px; color: var(--fg);">AI 工具 · Agent</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 11px; padding: 13px 15px; border: 1px solid var(--line); border-radius: 3px;">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"><path d="M12 19l7-7a4 4 0 0 0-5.7-5.7l-8 8a2.5 2.5 0 0 0 3.5 3.5l7.5-7.5"/></svg>
+                <span style="font-size: 13px; color: var(--fg);">文创</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 11px; padding: 13px 15px; border: 1px solid var(--line); border-radius: 3px;">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"><path d="M6 21v-7h12v7M8 14V9a4 4 0 0 1 8 0v5M9 21v-3M15 21v-3M7 9V6"/></svg>
+                <span style="font-size: 13px; color: var(--fg);">适老设计</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 11px; padding: 13px 15px; border: 1px solid var(--line); border-radius: 3px;">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg>
+                <span style="font-size: 13px; color: var(--fg);">儿童玩具</span>
+              </div>
+            </div>
+            <span style="flex: 1;"></span>
+            <div style="display: flex; align-items: center; gap: 10px; margin-top: 28px; padding: 13px 16px; border: 1px dashed var(--line2); border-radius: 3px;">
+              <span class="ph">待填</span>
+              <span style="font-size: 12.5px; color: var(--fg3);">这里放 2–3 件已经做出来的东西，配实拍图最好</span>
+            </div>
+          </div>
+        </div>
+        </sc-if>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ 02 · CONTENT SYSTEM ══════════ -->
+  <div id="content" class="grid-bg" style="border-bottom: 1px solid var(--line);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 96px 48px 104px;">
+
+      <div style="display: flex; align-items: baseline; gap: 20px; margin-bottom: 18px;">
+        <span class="mono" style="font-size: 11px; color: var(--accent);">02</span>
+        <span style="width: 48px; height: 1px; background: var(--line2); align-self: center;"></span>
+        <span class="mono" style="font-size: 11px; color: var(--fg3);">CONTENT SYSTEM</span>
+      </div>
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 60px; margin-bottom: 44px;">
+        <h2 class="serif" style="margin: 0; font-size: 46px; font-weight: 900; line-height: 1.18; color: var(--fg); max-width: 20ch;">四个号，一条主线。</h2>
+        <p style="margin: 0 0 8px; font-size: 15px; line-height: 1.85; color: var(--fg2); max-width: 34ch;">平台不一样，写的其实是同一件事：看到了什么，想明白了什么，然后动手做了什么。</p>
+      </div>
+
+      <div style="border: 1px solid var(--line); border-radius: 3px; background: var(--bg2); overflow: hidden;">
+        <div style="display: flex; border-bottom: 1px solid var(--line);">
+          <div class="tab {{ch.wechat}}" onClick="{{tab.wechat}}" style="border-right: 1px solid var(--line);">
+            <span class="mono" style="font-size: 9.5px; color: var(--fg3);">CHANNEL · 01</span>
+            <span style="font-size: 14.5px; font-weight: 500; color: var(--fg);">公众号 · BitBuild</span>
+          </div>
+          <div class="tab {{ch.x}}" onClick="{{tab.x}}" style="border-right: 1px solid var(--line);">
+            <span class="mono" style="font-size: 9.5px; color: var(--fg3);">CHANNEL · 02</span>
+            <span style="font-size: 14.5px; font-weight: 500; color: var(--fg);">X · @neohoy77</span>
+          </div>
+          <div class="tab {{ch.gh}}" onClick="{{tab.gh}}" style="border-right: 1px solid var(--line);">
+            <span class="mono" style="font-size: 9.5px; color: var(--fg3);">CHANNEL · 03</span>
+            <span style="font-size: 14.5px; font-weight: 500; color: var(--fg);">GitHub · neohoy</span>
+          </div>
+          <div class="tab {{ch.xhs}}" onClick="{{tab.xhs}}">
+            <span class="mono" style="font-size: 9.5px; color: var(--fg3);">CHANNEL · 04</span>
+            <span style="font-size: 14.5px; font-weight: 500; color: var(--fg);">小红书 · 牛师傅</span>
+          </div>
+        </div>
+
+        <!-- panel : wechat -->
+        <sc-if value="{{on.wechat}}" hint-placeholder-val="{{ true }}">
+        <div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; padding: 46px 44px 48px;">
+          <div>
+            <h3 class="serif" style="margin: 0 0 16px; font-size: 27px; font-weight: 600; color: var(--fg);">建造观察局</h3>
+            <p style="margin: 0 0 20px; font-size: 14.5px; line-height: 1.9; color: var(--fg2);">主阵地。长文写行业里正在变的部分：技术进到工地要过几道关、一个新工具是真省事还是换个地方费事、哪些判断我三个月后改了口。</p>
+            <p style="margin: 0; font-size: 14.5px; line-height: 1.9; color: var(--fg2);">不追热点，只写能放半年还成立的东西。</p>
+            <div style="display: inline-flex; align-items: center; gap: 9px; margin-top: 28px; font-size: 14px; font-weight: 500; color: var(--accent); cursor: pointer;">微信搜「BitBuild 建造观察局」 <span class="arrow">→</span></div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div class="mono" style="font-size: 10px; color: var(--fg3); margin-bottom: 4px;">四条内容线</div>
+            <div class="linkrow"><span style="font-size: 14px; color: var(--fg);">建筑观察</span><span class="mono" style="font-size: 10px; color: var(--fg3);">行业在变什么</span></div>
+            <div class="linkrow"><span style="font-size: 14px; color: var(--fg);">AI 工具</span><span class="mono" style="font-size: 10px; color: var(--fg3);">用过才写</span></div>
+            <div class="linkrow"><span style="font-size: 14px; color: var(--fg);">造物实验</span><span class="mono" style="font-size: 10px; color: var(--fg3);">做坏的也写</span></div>
+            <div class="linkrow"><span style="font-size: 14px; color: var(--fg);">适老 &amp; 生活</span><span class="mono" style="font-size: 10px; color: var(--fg3);">给家里人做的</span></div>
+          </div>
+        </div>
+        </sc-if>
+
+        <!-- panel : xhs -->
+        <sc-if value="{{on.xhs}}" hint-placeholder-val="{{ true }}">
+        <div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; padding: 46px 44px 48px;">
+          <div>
+            <h3 class="serif" style="margin: 0 0 16px; font-size: 27px; font-weight: 600; color: var(--fg);">牛师傅 | neohoy</h3>
+            <p style="margin: 0 0 20px; font-size: 14.5px; line-height: 1.9; color: var(--fg2);">图文为主。公众号写清楚「为什么」，小红书就负责给出「长什么样」——手绘草图、过程照、做到一半的样子。</p>
+            <div style="display: flex; align-items: center; gap: 12px; padding: 15px 18px; border: 1px solid var(--line); border-radius: 3px; background: var(--bg3);">
+              <span class="mono" style="font-size: 10px; color: var(--fg3);">小红书号</span>
+              <span class="mono" style="font-size: 15px; color: var(--fg); letter-spacing: .1em;">9567321987</span>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 7px; margin-top: 22px;">
+              <span class="chip" style="cursor: default; pointer-events: none;">#AI</span>
+              <span class="chip" style="cursor: default; pointer-events: none;">#建筑科技</span>
+              <span class="chip" style="cursor: default; pointer-events: none;">#工具推荐</span>
+              <span class="chip" style="cursor: default; pointer-events: none;">#造物集</span>
+              <span class="chip" style="cursor: default; pointer-events: none;">#适老化设计</span>
+              <span class="chip" style="cursor: default; pointer-events: none;">#文创</span>
+              <span class="chip" style="cursor: default; pointer-events: none;">#创业日记</span>
+            </div>
+          </div>
+          <div>
+            <div class="mono" style="font-size: 10px; color: var(--fg3); margin-bottom: 14px;">精选封面</div>
+            <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px;">
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                <div class="grid-bg" style="aspect-ratio: 1; width: 100%; border-radius: 50%; border: 1px solid var(--line2); background-color: var(--paper); display: flex; align-items: center; justify-content: center;">
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2F62C4" stroke-width="1.3" stroke-linecap="square"><path d="M3 21h18M6 21V9l6-4.5L18 9v12M10 21v-6h4v6M9 12h1M14 12h1"/></svg>
+                </div>
+                <span style="font-size: 11.5px; color: var(--fg2);">建筑观察</span>
+              </div>
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                <div class="grid-bg" style="aspect-ratio: 1; width: 100%; border-radius: 50%; border: 1px solid var(--line2); background-color: var(--paper); display: flex; align-items: center; justify-content: center;">
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2F62C4" stroke-width="1.3"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M10 7V4M14 7V4M10 20v-3M14 20v-3M7 10H4M7 14H4M20 10h-3M20 14h-3"/></svg>
+                </div>
+                <span style="font-size: 11.5px; color: var(--fg2);">AI 工具</span>
+              </div>
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                <div class="grid-bg" style="aspect-ratio: 1; width: 100%; border-radius: 50%; border: 1px solid var(--line2); background-color: var(--paper); display: flex; align-items: center; justify-content: center;">
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2F62C4" stroke-width="1.3" stroke-linecap="round"><path d="M4 20l4-1 10.5-10.5a2.5 2.5 0 0 0-3.5-3.5L4.5 15.5 4 20z"/><path d="M14 6.5l3.5 3.5"/></svg>
+                </div>
+                <span style="font-size: 11.5px; color: var(--fg2);">造物实验</span>
+              </div>
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                <div class="grid-bg" style="aspect-ratio: 1; width: 100%; border-radius: 50%; border: 1px solid var(--line2); background-color: var(--paper); display: flex; align-items: center; justify-content: center;">
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2F62C4" stroke-width="1.3" stroke-linecap="round"><path d="M6 21v-7h12v7M8 14V9a4 4 0 0 1 8 0v5M9 21v-3M15 21v-3"/></svg>
+                </div>
+                <span style="font-size: 11.5px; color: var(--fg2);">适老&amp;生活</span>
+              </div>
+            </div>
+            <p style="margin: 24px 0 0; font-size: 13px; line-height: 1.85; color: var(--fg3);">封面统一走蓝墨手绘，四类各一个圆图标——这套视觉在首页、公众号、小红书三边保持一致。</p>
+          </div>
+        </div>
+        </sc-if>
+
+        <!-- panel : x -->
+        <sc-if value="{{on.x}}" hint-placeholder-val="{{ true }}">
+        <div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; padding: 46px 44px 48px;">
+          <div>
+            <h3 class="serif" style="margin: 0 0 16px; font-size: 27px; font-weight: 600; color: var(--fg);">牛老 | neohoy</h3>
+            <p style="margin: 0 0 20px; font-size: 14.5px; line-height: 1.9; color: var(--fg2);">短的那一端。看到什么随手记，多数是还没想清楚的半成品——想清楚了才会变成公众号长文。英文内容和海外 AI 圈的动静也主要放这里。</p>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <div class="linkrow"><span style="font-size: 14px; color: var(--fg);">@neohoy77</span><span class="mono" style="font-size: 10px; color: var(--fg3);">X / TWITTER</span></div>
+              <div class="linkrow"><span style="font-size: 14px; color: var(--fg);">bitbuild.cc</span><span class="mono" style="font-size: 10px; color: var(--fg3);">WEBSITE</span></div>
+            </div>
+          </div>
+          <div class="grid-bg" style="border: 1px solid var(--line); border-radius: 3px; padding: 32px 30px; background-color: var(--bg3);">
+            <div class="mono" style="font-size: 10px; color: var(--fg3); margin-bottom: 20px;">BIO · 现用版本</div>
+            <div style="font-size: 14px; line-height: 2.05; color: var(--fg2);">
+              AI × 建筑科技 × 造物<br>
+              观察行业，探索技术，把想法做成有用的东西。<br>
+              <span style="color: var(--fg);">BitBuild 建造观察局</span>：看行业，看趋势，看未来。<br>
+              <span style="color: var(--fg);">NEO 造物集</span>：AI 工具 / Agent / 文创 / 适老 / 儿童玩具……想到，就造。<br>
+              <span style="color: var(--accent);">观察世界，也创造世界。</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 22px; margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--line);">
+              <span class="mono" style="font-size: 10px; color: var(--fg3);">JOINED FEB 2026</span>
+              <span class="mono" style="font-size: 10px; color: var(--fg3);">BITBUILD.CC</span>
+            </div>
+          </div>
+        </div>
+        </sc-if>
+
+        <!-- panel : github -->
+        <sc-if value="{{on.gh}}" hint-placeholder-val="{{ true }}">
+        <div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; padding: 46px 44px 48px;">
+          <div>
+            <h3 class="serif" style="margin: 0 0 16px; font-size: 27px; font-weight: 600; color: var(--fg);">neohoy</h3>
+            <p style="margin: 0 0 20px; font-size: 14.5px; line-height: 1.9; color: var(--fg2);">两本手册的源码都在这儿，都是可以直接 clone 下来本地跑的静态站。发现哪句写错了，欢迎直接提 PR——比留言更省事。</p>
+            <a href="https://github.com/neohoy" target="_blank" style="display: inline-flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 500;">github.com/neohoy <span class="arrow">→</span></a>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <a href="https://github.com/neohoy/claudebook" target="_blank" class="linkrow" style="text-decoration: none;">
+              <div style="display: flex; flex-direction: column; gap: 5px;">
+                <span style="font-size: 14px; color: var(--fg);">claudebook</span>
+                <span style="font-size: 12px; color: var(--fg3);">Claude Code 中文教程 · 三语言静态站生成器</span>
+              </div>
+              <span class="mono" style="font-size: 10px; color: var(--fg3);">190 DOCS</span>
+            </a>
+            <a href="https://github.com/neohoy/doubaobook" target="_blank" class="linkrow" style="text-decoration: none;">
+              <div style="display: flex; flex-direction: column; gap: 5px;">
+                <span style="font-size: 14px; color: var(--fg);">doubaobook</span>
+                <span style="font-size: 12px; color: var(--fg3);">豆包工作手册 · VitePress</span>
+              </div>
+              <span class="mono" style="font-size: 10px; color: var(--fg3);">37 DOCS</span>
+            </a>
+            <div class="linkrow dashed" style="cursor: default;">
+              <span style="font-size: 13px; color: var(--fg3);">还有想公开的仓库，加在这里</span>
+              <span class="ph">待填</span>
+            </div>
+          </div>
+        </div>
+        </sc-if>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ 03 · GET IN TOUCH ══════════ -->
+  <div id="contact" class="grid-bg">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 96px 48px 92px;">
+      <div style="display: flex; align-items: baseline; gap: 20px; margin-bottom: 34px;">
+        <span class="mono" style="font-size: 11px; color: var(--accent);">03</span>
+        <span style="width: 48px; height: 1px; background: var(--line2); align-self: center;"></span>
+        <span class="mono" style="font-size: 11px; color: var(--fg3);">GET IN TOUCH</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); gap: 84px; align-items: start;">
+        <div>
+          <h2 class="serif" style="margin: 0 0 24px; font-size: 56px; font-weight: 900; line-height: 1.16; color: var(--fg);">有想做的东西？<br>说来听听。</h2>
+          <p style="margin: 0 0 34px; font-size: 15.5px; line-height: 2; color: var(--fg2); max-width: 30em;">建筑科技的行业顾问、AI 工具与工作流落地、内容合作，都可以聊。写信的时候把背景和你卡在哪儿说清楚，我回得会快很多。</p>
+          <a href="mailto:neohoy@gmail.com" class="btn btn-solid" style="text-decoration: none;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 6.5l9 6 9-6"/></svg>
+            <span style="color: #fff;">写信给我</span>
+          </a>
+        </div>
+
+        <div style="display: grid; grid-template-columns: minmax(0, 1fr) 208px; gap: 22px; align-items: start;">
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <a href="mailto:neohoy@gmail.com" class="linkrow" style="text-decoration: none; align-items: flex-start;">
+              <div style="display: flex; flex-direction: column; gap: 7px; min-width: 0;">
+                <span class="mono" style="font-size: 9.5px; color: var(--fg3);">EMAIL</span>
+                <span style="font-size: 17px; color: var(--fg); word-break: break-all;">neohoy@gmail.com</span>
+              </div>
+              <span class="arrow" style="color: var(--fg3);">→</span>
+            </a>
+            <div style="padding: 18px 20px; border: 1px solid var(--line); border-radius: 3px; background: var(--bg2);">
+              <div class="mono" style="font-size: 9.5px; color: var(--fg3); margin-bottom: 9px;">WECHAT</div>
+              <div style="font-size: 13px; line-height: 1.8; color: var(--fg2);">扫右边的码加我微信。注明来意，<br>没写来意的一般不通过。</div>
+            </div>
+          </div>
+
+          <div style="position: relative;">
+            <div style="position: absolute; top: -9px; left: -9px; width: 18px; height: 18px; border-left: 1px solid var(--accent); border-top: 1px solid var(--accent); opacity: .6;"></div>
+            <div style="position: absolute; bottom: -9px; right: -9px; width: 18px; height: 18px; border-right: 1px solid var(--accent); border-bottom: 1px solid var(--accent); opacity: .6;"></div>
+            <div style="background: var(--paper); border: 1px solid var(--line2); border-radius: 3px; overflow: hidden;">
+              <svg viewBox="0 0 200 200" style="display: block; width: 100%; height: auto; background: #FAF8F3;">
+                <defs><pattern id="qrg" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M10 0H0V10" fill="none" stroke="rgba(40,80,150,0.09)" stroke-width="1"/></pattern></defs>
+                <rect width="200" height="200" fill="url(#qrg)"/>
+                <g stroke="rgba(47,98,196,0.55)" fill="none" stroke-width="2.2">
+                  <path d="M30 52V30h22M148 30h22v22M170 148v22h-22M52 170H30v-22"/>
+                </g>
+                <g stroke="rgba(47,98,196,0.45)" fill="none" stroke-width="1.6">
+                  <rect x="52" y="52" width="30" height="30"/><rect x="60" y="60" width="14" height="14" fill="rgba(47,98,196,0.35)" stroke="none"/>
+                  <rect x="118" y="52" width="30" height="30"/><rect x="126" y="60" width="14" height="14" fill="rgba(47,98,196,0.35)" stroke="none"/>
+                  <rect x="52" y="118" width="30" height="30"/><rect x="60" y="126" width="14" height="14" fill="rgba(47,98,196,0.35)" stroke="none"/>
+                </g>
+                <g fill="rgba(47,98,196,0.22)">
+                  <rect x="120" y="120" width="9" height="9"/><rect x="133" y="120" width="9" height="9"/><rect x="120" y="133" width="9" height="9"/>
+                  <rect x="139" y="133" width="9" height="9"/><rect x="126" y="142" width="9" height="9"/><rect x="139" y="120" width="4" height="4"/>
+                  <rect x="94" y="94" width="9" height="9"/><rect x="94" y="112" width="9" height="9"/><rect x="94" y="130" width="9" height="9"/>
+                </g>
+                <text x="100" y="192" text-anchor="middle" font-family="monospace" font-size="8.5" letter-spacing="1.4" fill="rgba(40,80,150,0.5)">WECHAT QR</text>
+              </svg>
+              <div style="display: flex; align-items: center; justify-content: center; gap: 9px; padding: 11px 12px; border-top: 1px solid rgba(20,35,60,0.1); background: #F3F0E8;">
+                <span class="ph">待填</span>
+                <span style="font-size: 11.5px; color: #46536A;">换成你的二维码</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <div style="border-top: 1px solid var(--line); background: var(--bg2);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 34px 48px; display: flex; align-items: center; justify-content: space-between;">
+      <span class="mono" style="font-size: 10.5px; color: var(--fg3);">© 2026 NEOHOY · BITBUILD.CC</span>
+      <span class="mono" style="font-size: 10.5px; color: var(--fg3);">OBSERVE · THINK · BUILD</span>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"theme":{"editor":"enum","options":["ink","paper"],"default":"ink","section":"外观"},"accent":{"editor":"color","default":"#3B7BE8","options":["#3B7BE8","#2F62C4","#C46A2F","#2F9E7A"],"section":"外观"},"$preview":{"width":1440,"height":4800}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { filter: 'all', channel: 'wechat' };
+  }
+
+  scrollTo(id) {
+    const el = document.getElementById(id);
+    if (el && el.scrollIntoView) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  renderVals() {
+    const f = this.state.filter;
+    const c = this.state.channel;
+    const mark = (id) => (f === id ? 'on' : '');
+    const chan = (id) => (c === id ? 'on' : '');
+    return {
+      themeClass: this.props.theme === 'paper' ? 'paper' : 'ink',
+      accent: this.props.accent ?? '#3B7BE8',
+      sel: { all: mark('all'), book: mark('book'), media: mark('media'), make: mark('make') },
+      pick: {
+        all: () => this.setState({ filter: 'all' }),
+        book: () => this.setState({ filter: 'book' }),
+        media: () => this.setState({ filter: 'media' }),
+        make: () => this.setState({ filter: 'make' })
+      },
+      show: {
+        book: f === 'all' || f === 'book',
+        media: f === 'all' || f === 'media',
+        make: f === 'all' || f === 'make'
+      },
+      ch: { wechat: chan('wechat'), xhs: chan('xhs'), x: chan('x'), gh: chan('gh') },
+      on: { wechat: c === 'wechat', xhs: c === 'xhs', x: c === 'x', gh: c === 'gh' },
+      tab: {
+        wechat: () => this.setState({ channel: 'wechat' }),
+        xhs: () => this.setState({ channel: 'xhs' }),
+        x: () => this.setState({ channel: 'x' }),
+        gh: () => this.setState({ channel: 'gh' })
+      },
+      go: {
+        top: () => this.scrollTo('top'),
+        works: () => this.scrollTo('works'),
+        content: () => this.scrollTo('content'),
+        contact: () => this.scrollTo('contact')
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # dist/ 已入库，这里只做一次校验，确保它和 design/ 没脱节
+      - name: Rebuild and verify dist is in sync
+        run: |
+          python3 build.py
+          git diff --exit-code -- dist/ || {
+            echo "::error::dist/ 和 design/ 不同步。本地跑 python3 build.py 后重新提交。"
+            exit 1
+          }
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - id: deployment
+        uses: actions/deploy-pages@v4

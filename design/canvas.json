@@ -1,0 +1,12 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 1440, "h": 4900, "title": "首页 · 桌面", "expand": "fill", "is_interactive": true },
+    { "file": "Mobile.dc.html", "x": 1560, "y": 0, "w": 390, "h": 3500, "title": "首页 · 手机", "is_interactive": true },
+    { "file": "System.dc.html", "x": 2070, "y": 0, "w": 1100, "h": 1560, "title": "蓝图 · 设计系统" }
+  ],
+  "annotations": [
+    { "id": "brief", "x": 0, "y": -190, "w": 620, "text": "牛叔 · 个人 IP 首页\n结构：英雄区（横幅 + 头像压角）→ 核心指标 → 卷首语 → 01 作品 → 02 内容 → 03 联系。\n作品一行一件，图文左右交替；内容区顺序 公众号 → X → GitHub → 小红书。\n筛选片、频道页签、导航滚动都是活的，直接点。" },
+    { "id": "todo", "x": 2070, "y": -190, "w": 620, "text": "还差\n· 微信二维码（联系区那个方框）\n· NEO 造物集的 2–3 件成品 + 实拍图\n· 公众号名「建造观察局」还是「观察家」" }
+  ],
+  "launch": { "view": "canvas" }
+}
