@@ -42,3 +42,10 @@ bitbuild.cc 接上 Cloudflare 之后把它改成 `https://bitbuild.cc/`，重新
 - 联系区的微信二维码（现在是制图占位框）
 - NEO 造物集的成品实拍图
 - 核心指标里公众号读者数与 GitHub Stars 需要定期更新
+
+## 图片
+
+`design/` 顶层的图片会被 `build.py` 全量同步到 `dist/`，加新图直接放进去即可，
+不用改脚本；页面引用了但 `design/` 里没有的图会让构建直接失败，避免线上碎图。
+
+原始大图放 `design/_source/`（子目录不参与打包），例如横幅的 webp 原件。

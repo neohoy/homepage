@@ -212,12 +212,21 @@ img {{ max-width: 100%; }}
 </html>
 '''
 
-for asset in ('avatar.jpg', 'banner.jpg'):
-    shutil.copyfile(SRC / asset, DIST / asset)
+# design/ 下的图片全部同步到 dist/，加新图不用改脚本
+IMG_EXT = {'.jpg', '.jpeg', '.png', '.gif', '.webp', '.avif', '.svg'}
+assets = sorted(p for p in SRC.iterdir() if p.suffix.lower() in IMG_EXT)
+for a in assets:
+    shutil.copyfile(a, DIST / a.name)
+
+# 页面里引用到的图必须真的存在，否则线上就是碎图
+referenced = set(re.findall(r'src="([^"/:]+\.(?:jpg|jpeg|png|gif|webp|avif|svg))"', body))
+missing = sorted(referenced - {a.name for a in assets})
+if missing:
+    raise SystemExit('design/ 缺少页面引用的图片: ' + ', '.join(missing))
 
 out = DIST / 'index.html'
 out.write_text(html, encoding='utf-8')
 opens, closes = html.count('<div'), html.count('</div>')
 if opens != closes:
     raise SystemExit(f'div 不平衡: {opens} 开 / {closes} 闭')
-print(f'dist/index.html 已生成 · {len(html):,} 字符 · div {opens} 对 · 图片已同步')
+print(f'dist/index.html 已生成 · {len(html):,} 字符 · div {opens} 对 · 图片 {len(assets)} 张')
