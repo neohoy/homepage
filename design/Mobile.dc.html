@@ -290,7 +290,7 @@
   <div style="border-bottom: 1px solid var(--line); background: var(--bg2); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));">
     <div style="padding: 24px 20px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 7px;">
       <span class="mono" style="font-size: 9px; color: var(--fg3);">REEL 01</span>
-      <span class="serif" style="font-size: 30px; font-weight: 900; line-height: 1; color: var(--fg);">7<span style="font-size: 13px; font-weight: 600; margin-left: 3px; color: var(--fg2);">件</span></span>
+      <span class="serif" style="font-size: 30px; font-weight: 900; line-height: 1; color: var(--fg);">8<span style="font-size: 13px; font-weight: 600; margin-left: 3px; color: var(--fg2);">件</span></span>
       <span style="font-size: 11.5px; color: var(--fg2);">在跑的作品</span>
     </div>
     <div style="padding: 24px 20px; border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 7px;">
@@ -330,6 +330,7 @@
     <div style="display: flex; gap: 8px; margin-bottom: 22px; flex-wrap: wrap;">
       <div class="chip {{sel.all}}" onClick="{{pick.all}}">全部</div>
       <div class="chip {{sel.book}}" onClick="{{pick.book}}">AI 手册</div>
+      <div class="chip {{sel.product}}" onClick="{{pick.product}}">产品</div>
       <div class="chip {{sel.game}}" onClick="{{pick.game}}">游戏开发</div>
       <div class="chip {{sel.media}}" onClick="{{pick.media}}">内容</div>
       <div class="chip {{sel.make}}" onClick="{{pick.make}}">造物</div>
@@ -449,6 +450,36 @@
       </div>
       </sc-if>
 
+      <sc-if value="{{show.product}}" hint-placeholder-val="{{ true }}">
+      <div class="card">
+        <div style="padding: 22px 20px 24px;">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 13px;">
+            <span class="mono" style="font-size: 9px; color: var(--accent);">WORK · 06</span>
+            <span style="width: 18px; height: 1px; background: var(--line2);"></span>
+            <span class="mono" style="font-size: 9px; color: var(--fg3);">产品 · 演示站</span>
+          </div>
+          <h3 style="margin: 0 0 4px; font-size: 20px; font-weight: 700; color: var(--fg);">安龄居家</h3>
+          <div class="mono" style="font-size: 9.5px; color: var(--fg3); margin-bottom: 13px;">先看图，再买东西</div>
+          <p style="margin: 0 0 16px; font-size: 13.5px; line-height: 1.85; color: var(--fg2);">起点是给我爸妈家做适老化。难处不是买不到东西，是不知道该买什么——满屏扶手和防滑垫，没人先告诉你自己家哪里危险。所以顺序反过来：先 12 题自测出一张标好危险点的图，再决定买什么。</p>
+          <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-bottom: 18px;">
+            <div style="padding: 9px 6px; border: 1px solid var(--line); border-radius: 3px; display: flex; flex-direction: column; gap: 3px; align-items: center;">
+              <span style="font-size: 14px; font-weight: 800; color: var(--fg);">12</span>
+              <span style="font-size: 8.5px; color: var(--fg3);">题自测</span>
+            </div>
+            <div style="padding: 9px 6px; border: 1px solid var(--line); border-radius: 3px; display: flex; flex-direction: column; gap: 3px; align-items: center;">
+              <span style="font-size: 14px; font-weight: 800; color: var(--fg);">17</span>
+              <span style="font-size: 8.5px; color: var(--fg3);">款选品</span>
+            </div>
+            <div style="padding: 9px 6px; border: 1px solid var(--line); border-radius: 3px; display: flex; flex-direction: column; gap: 3px; align-items: center;">
+              <span style="font-size: 11px; font-weight: 800; color: var(--fg);">MZ/T</span>
+              <span style="font-size: 8.5px; color: var(--fg3);">国标依据</span>
+            </div>
+          </div>
+          <a href="https://neohoy.github.io/anling-home/" target="_blank" style="font-size: 14px; font-weight: 500;">打开演示站 →</a>
+        </div>
+      </div>
+      </sc-if>
+
       <sc-if value="{{show.media}}" hint-placeholder-val="{{ true }}">
       <div class="card">
         <div style="background: var(--bg3); border-bottom: 1px solid var(--line); padding: 20px 20px 0; overflow: hidden;">
@@ -484,7 +515,7 @@
         </div>
         <div style="padding: 22px 20px 24px;">
           <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 13px;">
-            <span class="mono" style="font-size: 9px; color: var(--accent);">WORK · 06</span>
+            <span class="mono" style="font-size: 9px; color: var(--accent);">WORK · 07</span>
             <span style="width: 18px; height: 1px; background: var(--line2);"></span>
             <span class="mono" style="font-size: 9px; color: var(--fg3);">公众号</span>
           </div>
@@ -519,7 +550,7 @@
         </div>
         <div style="padding: 22px 20px 24px;">
           <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 13px;">
-            <span class="mono" style="font-size: 9px; color: var(--accent);">WORK · 07</span>
+            <span class="mono" style="font-size: 9px; color: var(--accent);">WORK · 08</span>
             <span style="width: 18px; height: 1px; background: var(--line2);"></span>
             <span class="mono" style="font-size: 9px; color: var(--fg3);">长期进行中</span>
           </div>
@@ -664,16 +695,18 @@ class Component extends DCLogic {
       menuOpen: this.state.menu,
       menuIcon: this.state.menu ? 'M5 5l14 14M19 5L5 19' : 'M3 7h18M3 12h18M3 17h18',
       toggleMenu: () => this.setState({ menu: !this.state.menu }),
-      sel: { all: mark('all'), book: mark('book'), game: mark('game'), media: mark('media'), make: mark('make') },
+      sel: { all: mark('all'), book: mark('book'), product: mark('product'), game: mark('game'), media: mark('media'), make: mark('make') },
       pick: {
         all: () => this.setState({ filter: 'all' }),
         book: () => this.setState({ filter: 'book' }),
+        product: () => this.setState({ filter: 'product' }),
         game: () => this.setState({ filter: 'game' }),
         media: () => this.setState({ filter: 'media' }),
         make: () => this.setState({ filter: 'make' })
       },
       show: {
         book: f === 'all' || f === 'book',
+        product: f === 'all' || f === 'product',
         game: f === 'all' || f === 'game',
         media: f === 'all' || f === 'media',
         make: f === 'all' || f === 'make'
