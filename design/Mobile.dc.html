@@ -290,7 +290,7 @@
   <div style="border-bottom: 1px solid var(--line); background: var(--bg2); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));">
     <div style="padding: 24px 20px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 7px;">
       <span class="mono" style="font-size: 9px; color: var(--fg3);">REEL 01</span>
-      <span class="serif" style="font-size: 30px; font-weight: 900; line-height: 1; color: var(--fg);">4<span style="font-size: 13px; font-weight: 600; margin-left: 3px; color: var(--fg2);">件</span></span>
+      <span class="serif" style="font-size: 30px; font-weight: 900; line-height: 1; color: var(--fg);">7<span style="font-size: 13px; font-weight: 600; margin-left: 3px; color: var(--fg2);">件</span></span>
       <span style="font-size: 11.5px; color: var(--fg2);">在跑的作品</span>
     </div>
     <div style="padding: 24px 20px; border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 7px;">
@@ -329,7 +329,8 @@
 
     <div style="display: flex; gap: 8px; margin-bottom: 22px; flex-wrap: wrap;">
       <div class="chip {{sel.all}}" onClick="{{pick.all}}">全部</div>
-      <div class="chip {{sel.book}}" onClick="{{pick.book}}">教程站</div>
+      <div class="chip {{sel.book}}" onClick="{{pick.book}}">AI 手册</div>
+      <div class="chip {{sel.game}}" onClick="{{pick.game}}">游戏开发</div>
       <div class="chip {{sel.media}}" onClick="{{pick.media}}">内容</div>
       <div class="chip {{sel.make}}" onClick="{{pick.make}}">造物</div>
     </div>
@@ -362,7 +363,7 @@
           <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 13px;">
             <span class="mono" style="font-size: 9px; color: var(--accent);">FEATURED · 01</span>
             <span style="width: 18px; height: 1px; background: var(--line2);"></span>
-            <span class="mono" style="font-size: 9px; color: var(--fg3);">教程站</span>
+            <span class="mono" style="font-size: 9px; color: var(--fg3);">AI 手册</span>
           </div>
           <h3 style="margin: 0 0 4px; font-size: 20px; font-weight: 700; color: var(--fg);">Claude Code 中文教程</h3>
           <div class="mono" style="font-size: 9.5px; color: var(--fg3); margin-bottom: 13px;">CLAUDEBOOK</div>
@@ -376,12 +377,74 @@
           <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 13px;">
             <span class="mono" style="font-size: 9px; color: var(--accent);">WORK · 02</span>
             <span style="width: 18px; height: 1px; background: var(--line2);"></span>
-            <span class="mono" style="font-size: 9px; color: var(--fg3);">教程站</span>
+            <span class="mono" style="font-size: 9px; color: var(--fg3);">AI 手册</span>
           </div>
           <h3 style="margin: 0 0 4px; font-size: 20px; font-weight: 700; color: var(--fg);">豆包工作手册</h3>
           <div class="mono" style="font-size: 9.5px; color: var(--fg3); margin-bottom: 13px;">DOUBAOBOOK · 37 篇</div>
           <p style="margin: 0 0 18px; font-size: 13.5px; line-height: 1.85; color: var(--fg2);">8 篇上手、10 篇进阶、15 个实战案例。每个案例走同一条线：速览 → 场景 → 提示词 → 为什么这么写 → 验收清单 → 坑。提示词整段可复制。</p>
           <a href="https://neohoy.github.io/doubaobook/" target="_blank" style="font-size: 14px; font-weight: 500;">在线阅读 →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="padding: 22px 20px 24px;">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 13px;">
+            <span class="mono" style="font-size: 9px; color: var(--accent);">WORK · 03</span>
+            <span style="width: 18px; height: 1px; background: var(--line2);"></span>
+            <span class="mono" style="font-size: 9px; color: var(--fg3);">AI 手册</span>
+          </div>
+          <h3 style="margin: 0 0 4px; font-size: 20px; font-weight: 700; color: var(--fg);">Codex 中文手册</h3>
+          <div class="mono" style="font-size: 9.5px; color: var(--fg3); margin-bottom: 13px;">先划清边界，再让它写代码</div>
+          <p style="margin: 0 0 18px; font-size: 13.5px; line-height: 1.85; color: var(--fg2);">这次连中文版都是 OpenAI 自己维护的，简繁都有，缺的还是顺序。133 篇官方镜像原样留着，另按「先跑通、再管住、然后扩展、最后交给团队」重排 15 篇。</p>
+          <a href="https://neohoy.github.io/codexbook/" target="_blank" style="font-size: 14px; font-weight: 500;">在线阅读 →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="padding: 22px 20px 24px;">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 13px;">
+            <span class="mono" style="font-size: 9px; color: var(--accent);">WORK · 04</span>
+            <span style="width: 18px; height: 1px; background: var(--line2);"></span>
+            <span class="mono" style="font-size: 9px; color: var(--fg3);">AI 手册</span>
+          </div>
+          <h3 style="margin: 0 0 4px; font-size: 20px; font-weight: 700; color: var(--fg);">WorkBuddy 手册</h3>
+          <div class="mono" style="font-size: 9.5px; color: var(--fg3); margin-bottom: 13px;">WORKBUDDYBOOK · 38 篇</div>
+          <p style="margin: 0 0 18px; font-size: 13.5px; line-height: 1.85; color: var(--fg2);">8 篇上手、11 篇进阶、12 个实战案例，外加排错与错误码、提示词模板库、零成本 Skill 精选。非官方社区教程，功能以官方最新说明为准。</p>
+          <a href="https://neohoy.github.io/workbuddybook/" target="_blank" style="font-size: 14px; font-weight: 500;">在线阅读 →</a>
+        </div>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{show.game}}" hint-placeholder-val="{{ true }}">
+      <div class="card">
+        <div style="padding: 22px 20px 24px;">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 13px;">
+            <span class="mono" style="font-size: 9px; color: var(--accent);">WORK · 05</span>
+            <span style="width: 18px; height: 1px; background: var(--line2);"></span>
+            <span class="mono" style="font-size: 9px; color: var(--fg3);">游戏开发</span>
+          </div>
+          <h3 style="margin: 0 0 4px; font-size: 20px; font-weight: 700; color: var(--fg);">Yanfly 插件中文文档</h3>
+          <div class="mono" style="font-size: 9.5px; color: var(--fg3); margin-bottom: 13px;">RPG MAKER MV · YEP</div>
+          <p style="margin: 0 0 16px; font-size: 13.5px; line-height: 1.85; color: var(--fg2);">RPG Maker MV 上用得最多的插件库，官方说明只有英文。131 篇逐段中英对照，备注标签与插件指令保留原文，照着抄不会抄错。单文件首页，打开就能搜。</p>
+          <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-bottom: 18px;">
+            <div style="padding: 9px 6px; border: 1px solid var(--line); border-radius: 3px; display: flex; flex-direction: column; gap: 3px; align-items: center;">
+              <span style="font-size: 14px; font-weight: 800; color: var(--fg);">131</span>
+              <span style="font-size: 8.5px; color: var(--fg3);">篇文档</span>
+            </div>
+            <div style="padding: 9px 6px; border: 1px solid var(--line); border-radius: 3px; display: flex; flex-direction: column; gap: 3px; align-items: center;">
+              <span style="font-size: 14px; font-weight: 800; color: var(--fg);">10</span>
+              <span style="font-size: 8.5px; color: var(--fg3);">个分类</span>
+            </div>
+            <div style="padding: 9px 6px; border: 1px solid var(--line); border-radius: 3px; display: flex; flex-direction: column; gap: 3px; align-items: center;">
+              <span style="font-size: 11px; font-weight: 800; color: var(--fg);">1–128</span>
+              <span style="font-size: 8.5px; color: var(--fg3);">YEP 编号</span>
+            </div>
+            <div style="padding: 9px 6px; border: 1px solid var(--line); border-radius: 3px; display: flex; flex-direction: column; gap: 3px; align-items: center;">
+              <span style="font-size: 14px; font-weight: 800; color: var(--fg);">100%</span>
+              <span style="font-size: 8.5px; color: var(--fg3);">中英对照</span>
+            </div>
+          </div>
+          <a href="https://neohoy.github.io/RPG-Maker-MV/" target="_blank" style="font-size: 14px; font-weight: 500;">打开首页 →</a>
         </div>
       </div>
       </sc-if>
@@ -421,7 +484,7 @@
         </div>
         <div style="padding: 22px 20px 24px;">
           <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 13px;">
-            <span class="mono" style="font-size: 9px; color: var(--accent);">WORK · 03</span>
+            <span class="mono" style="font-size: 9px; color: var(--accent);">WORK · 06</span>
             <span style="width: 18px; height: 1px; background: var(--line2);"></span>
             <span class="mono" style="font-size: 9px; color: var(--fg3);">公众号</span>
           </div>
@@ -456,7 +519,7 @@
         </div>
         <div style="padding: 22px 20px 24px;">
           <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 13px;">
-            <span class="mono" style="font-size: 9px; color: var(--accent);">WORK · 04</span>
+            <span class="mono" style="font-size: 9px; color: var(--accent);">WORK · 07</span>
             <span style="width: 18px; height: 1px; background: var(--line2);"></span>
             <span class="mono" style="font-size: 9px; color: var(--fg3);">长期进行中</span>
           </div>
@@ -534,10 +597,13 @@
       <sc-if value="{{on.gh}}" hint-placeholder-val="{{ false }}">
       <div>
         <h3 class="serif" style="margin: 0 0 12px; font-size: 21px; font-weight: 600; color: var(--fg);">neohoy</h3>
-        <p style="margin: 0 0 18px; font-size: 13.5px; line-height: 1.9; color: var(--fg2);">两本手册的源码都在这儿，都是可以直接 clone 下来本地跑的静态站。发现哪句写错了，欢迎直接提 PR——比留言更省事。</p>
+        <p style="margin: 0 0 18px; font-size: 13.5px; line-height: 1.9; color: var(--fg2);">四本中文手册和 Yanfly 插件文档的源码都在这儿，都是能直接 clone 下来本地跑的静态站。发现哪句写错了，欢迎直接提 PR——比留言更省事。</p>
         <div style="display: flex; flex-direction: column; gap: 9px;">
           <div class="linkrow"><span style="font-size: 13.5px; color: var(--fg);">claudebook</span><span class="mono" style="font-size: 9px; color: var(--fg3);">190 DOCS</span></div>
           <div class="linkrow"><span style="font-size: 13.5px; color: var(--fg);">doubaobook</span><span class="mono" style="font-size: 9px; color: var(--fg3);">37 DOCS</span></div>
+          <div class="linkrow"><span style="font-size: 13.5px; color: var(--fg);">codexbook</span><span class="mono" style="font-size: 9px; color: var(--fg3);">133 DOCS</span></div>
+          <div class="linkrow"><span style="font-size: 13.5px; color: var(--fg);">workbuddybook</span><span class="mono" style="font-size: 9px; color: var(--fg3);">38 DOCS</span></div>
+          <div class="linkrow"><span style="font-size: 13.5px; color: var(--fg);">RPG-Maker-MV</span><span class="mono" style="font-size: 9px; color: var(--fg3);">131 DOCS</span></div>
         </div>
       </div>
       </sc-if>
@@ -598,15 +664,17 @@ class Component extends DCLogic {
       menuOpen: this.state.menu,
       menuIcon: this.state.menu ? 'M5 5l14 14M19 5L5 19' : 'M3 7h18M3 12h18M3 17h18',
       toggleMenu: () => this.setState({ menu: !this.state.menu }),
-      sel: { all: mark('all'), book: mark('book'), media: mark('media'), make: mark('make') },
+      sel: { all: mark('all'), book: mark('book'), game: mark('game'), media: mark('media'), make: mark('make') },
       pick: {
         all: () => this.setState({ filter: 'all' }),
         book: () => this.setState({ filter: 'book' }),
+        game: () => this.setState({ filter: 'game' }),
         media: () => this.setState({ filter: 'media' }),
         make: () => this.setState({ filter: 'make' })
       },
       show: {
         book: f === 'all' || f === 'book',
+        game: f === 'all' || f === 'game',
         media: f === 'all' || f === 'media',
         make: f === 'all' || f === 'make'
       },

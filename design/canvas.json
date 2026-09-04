@@ -1,12 +1,50 @@
 {
   "artboards": [
-    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 1440, "h": 4900, "title": "首页 · 桌面", "expand": "fill", "is_interactive": true },
-    { "file": "Mobile.dc.html", "x": 1560, "y": 0, "w": 390, "h": 3500, "title": "首页 · 手机", "is_interactive": true },
-    { "file": "System.dc.html", "x": 2070, "y": 0, "w": 1100, "h": 1560, "title": "蓝图 · 设计系统" }
+    {
+      "file": "Main.dc.html",
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 7300,
+      "title": "首页 · 桌面",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    {
+      "file": "Mobile.dc.html",
+      "x": 1560,
+      "y": 0,
+      "w": 390,
+      "h": 5400,
+      "title": "首页 · 手机",
+      "is_interactive": true
+    },
+    {
+      "file": "System.dc.html",
+      "x": 2070,
+      "y": 0,
+      "w": 1100,
+      "h": 1560,
+      "title": "蓝图 · 设计系统"
+    }
   ],
   "annotations": [
-    { "id": "brief", "x": 0, "y": -190, "w": 620, "text": "牛叔 · 个人 IP 首页\n结构：英雄区（横幅 + 头像压角）→ 核心指标 → 卷首语 → 01 作品 → 02 内容 → 03 联系。\n作品一行一件，图文左右交替；内容区顺序 公众号 → X → GitHub → 小红书。\n筛选片、频道页签、导航滚动都是活的，直接点。" },
-    { "id": "todo", "x": 2070, "y": -190, "w": 620, "text": "还差\n· 微信二维码（联系区那个方框）\n· NEO 造物集的 2–3 件成品 + 实拍图\n· 公众号名「建造观察局」还是「观察家」" }
+    {
+      "id": "brief",
+      "x": 0,
+      "y": -190,
+      "w": 620,
+      "text": "牛叔 · 个人 IP 首页\n作品 7 件，一行一件，图文左右交替。筛选：全部 / AI 手册 / 游戏开发 / 内容 / 造物。\n01 claudebook  02 豆包  03 codexbook  04 WorkBuddy  05 Yanfly 插件文档  06 BitBuild  07 NEO 造物集\n筛选片、频道页签、导航滚动都是活的，直接点。"
+    },
+    {
+      "id": "todo",
+      "x": 2070,
+      "y": -190,
+      "w": 620,
+      "text": "还差\n· NEO 造物集的 2–3 件成品 + 实拍图\n· 公众号读者数 / GitHub Stars（REEL 02、03）\n· 公众号名「建造观察局」还是「观察家」\n· 二维码源图 258px，能导张大的更清晰"
+    }
   ],
-  "launch": { "view": "canvas" }
+  "launch": {
+    "view": "canvas"
+  }
 }

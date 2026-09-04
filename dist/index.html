@@ -419,7 +419,7 @@ img { max-width: 100%; }
     <div class="wrap" style="max-width: 1200px; margin: 0 auto; padding: 0 48px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));">
       <div style="padding: 34px 30px 34px 0; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 9px;">
         <span class="mono" style="font-size: 10px; color: var(--fg3);">REEL 01</span>
-        <span class="serif" style="font-size: 40px; font-weight: 900; line-height: 1; color: var(--fg);">4<span style="font-size: 17px; font-weight: 600; margin-left: 4px; color: var(--fg2);">件</span></span>
+        <span class="serif" style="font-size: 40px; font-weight: 900; line-height: 1; color: var(--fg);">7<span style="font-size: 17px; font-weight: 600; margin-left: 4px; color: var(--fg2);">件</span></span>
         <span style="font-size: 12.5px; color: var(--fg2);">在跑的作品</span>
       </div>
       <div style="padding: 34px 30px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 9px;">
@@ -462,11 +462,12 @@ img { max-width: 100%; }
       <div class="secHead" style="display: flex; align-items: flex-end; justify-content: space-between; gap: 60px; margin-bottom: 46px;">
         <div style="max-width: 46ch;">
           <h2 class="serif" style="margin: 0 0 18px; font-size: 46px; font-weight: 900; line-height: 1.18; color: var(--fg);">先做出来，再讲道理。</h2>
-          <p style="margin: 0; font-size: 15px; line-height: 1.85; color: var(--fg2);">这里只放跑得起来、打得开、能被别人拿去用的东西。每一件都对应一个我自己真实遇到过的问题。</p>
+          <p style="margin: 0; font-size: 15px; line-height: 1.85; color: var(--fg2);">这里只放跑得起来、打得开、能被别人拿去用的东西。四本中文手册，一个插件文档站，一个号，一条自留地。每一件都对应一个我自己真实遇到过的问题。</p>
         </div>
         <div class="chipRow" style="display: flex; gap: 9px; flex-shrink: 0; padding-bottom: 6px;">
           <div class="chip" data-filter="all">全部</div>
-          <div class="chip" data-filter="book">教程站</div>
+          <div class="chip" data-filter="book">AI 手册</div>
+          <div class="chip" data-filter="game">游戏开发</div>
           <div class="chip" data-filter="media">内容</div>
           <div class="chip" data-filter="make">造物</div>
         </div>
@@ -481,7 +482,7 @@ img { max-width: 100%; }
             <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 26px;">
               <span class="mono" style="font-size: 10px; color: var(--accent);">WORK · 01</span>
               <span style="width: 26px; height: 1px; background: var(--line2);"></span>
-              <span class="mono" style="font-size: 10px; color: var(--fg3);">教程站 · 开源</span>
+              <span class="mono" style="font-size: 10px; color: var(--fg3);">AI 手册 · 开源</span>
             </div>
             <h3 style="margin: 0 0 6px; font-size: 30px; font-weight: 700; line-height: 1.3; color: var(--fg);">Claude Code 中文教程</h3>
             <div class="mono" style="font-size: 11px; color: var(--fg3); margin-bottom: 20px;">CLAUDEBOOK</div>
@@ -599,7 +600,7 @@ img { max-width: 100%; }
             <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 26px;">
               <span class="mono" style="font-size: 10px; color: var(--accent);">WORK · 02</span>
               <span style="width: 26px; height: 1px; background: var(--line2);"></span>
-              <span class="mono" style="font-size: 10px; color: var(--fg3);">教程站 · 开源</span>
+              <span class="mono" style="font-size: 10px; color: var(--fg3);">AI 手册 · 开源</span>
             </div>
             <h3 style="margin: 0 0 6px; font-size: 30px; font-weight: 700; line-height: 1.3; color: var(--fg);">豆包工作手册</h3>
             <div class="mono" style="font-size: 11px; color: var(--fg3); margin-bottom: 20px;">DOUBAOBOOK</div>
@@ -616,12 +617,229 @@ img { max-width: 100%; }
         </div>
         </div>
 
-        <!-- ── 03 bitbuild : 文左 图右 ── -->
-        <div class="grp" data-work="media">
+        <!-- ── 03 codexbook : 文左 图右 ── -->
+        <div class="grp" data-work="book">
         <div class="card rc" style="display: grid; grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);">
           <div style="padding: 44px 44px 40px; display: flex; flex-direction: column;">
             <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 26px;">
               <span class="mono" style="font-size: 10px; color: var(--accent);">WORK · 03</span>
+              <span style="width: 26px; height: 1px; background: var(--line2);"></span>
+              <span class="mono" style="font-size: 10px; color: var(--fg3);">AI 手册 · 开源</span>
+            </div>
+            <h3 style="margin: 0 0 6px; font-size: 30px; font-weight: 700; line-height: 1.3; color: var(--fg);">Codex 中文手册</h3>
+            <div class="mono" style="font-size: 11px; color: var(--fg3); margin-bottom: 20px;">先划清边界，再让它写代码</div>
+            <p style="margin: 0 0 16px; font-size: 14.5px; line-height: 1.88; color: var(--fg2);">这次连中文版都是 OpenAI 自己维护的，简繁都有。缺的<strong style="color: var(--fg); font-weight: 500;">还是顺序</strong>——133 篇按主题平铺，第一次装上的人不知道从哪读起。这个站按「先跑通、再管住、然后扩展、最后交给团队」重排一遍。</p>
+            <p style="margin: 0 0 28px; font-size: 13px; line-height: 1.8; color: var(--fg3);">沙盒和审批到底差在哪、AGENTS.md 怎么写、上下文用完了怎么办——装上第一天就会撞到的三件事，前六篇讲完。</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 30px;">
+              <span class="chip" style="cursor: default; pointer-events: none;">简 · 繁</span>
+              <span class="chip" style="cursor: default; pointer-events: none;">133 篇官方镜像</span>
+              <span class="chip" style="cursor: default; pointer-events: none;">15 篇重排路线</span>
+            </div>
+            <span style="flex: 1;"></span>
+            <a href="https://neohoy.github.io/codexbook/" target="_blank" style="display: inline-flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 500;">在线阅读 <span class="arrow">→</span></a>
+          </div>
+          <div style="background: var(--bg3); border-left: 1px solid var(--line); padding: 36px 36px 0; display: flex; align-items: flex-end; overflow: hidden;">
+            <div class="shot" style="width: 100%; background: #FFFFFF; border: 1px solid rgba(0,0,0,0.09); border-radius: 5px 5px 0 0; overflow: hidden; box-shadow: 0 18px 44px rgba(0,0,0,0.32);">
+              <div style="display: flex; align-items: center; gap: 10px; padding: 10px 15px; border-bottom: 1px solid rgba(0,0,0,0.07);">
+                <span style="width: 14px; height: 14px; border-radius: 3px; background: #10A37F;"></span>
+                <span style="font-size: 9.5px; font-weight: 700; color: #1B2430;">Codex 中文手册</span>
+                <span style="flex: 1;"></span>
+                <span style="font-size: 8px; color: #7A8492;">快速上手</span>
+                <span style="font-size: 8px; color: #7A8492;">进阶教程</span>
+                <span style="font-size: 8px; color: #7A8492;">实战案例</span>
+                <span style="font-size: 8px; color: #7A8492;">官方文档</span>
+                <span style="width: 44px; height: 15px; border-radius: 3px; background: rgba(0,0,0,0.05);"></span>
+              </div>
+              <div style="display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 0;">
+                <div style="border-right: 1px solid rgba(0,0,0,0.06); padding: 16px 12px; display: flex; flex-direction: column; gap: 9px;">
+                  <span style="font-size: 7.5px; font-weight: 700; color: #1B2430;">快速上手</span>
+                  <span style="height: 2.5px; width: 74%; background: #10A37F; opacity: .5; border-radius: 2px;"></span>
+                  <span style="height: 2.5px; width: 60%; background: rgba(0,0,0,0.09); border-radius: 2px;"></span>
+                  <span style="height: 2.5px; width: 68%; background: rgba(0,0,0,0.09); border-radius: 2px;"></span>
+                  <span style="font-size: 7.5px; font-weight: 700; color: #1B2430; margin-top: 5px;">进阶教程</span>
+                  <span style="height: 2.5px; width: 62%; background: rgba(0,0,0,0.09); border-radius: 2px;"></span>
+                  <span style="height: 2.5px; width: 52%; background: rgba(0,0,0,0.09); border-radius: 2px;"></span>
+                </div>
+                <div style="padding: 22px 22px 20px;">
+                  <div style="font-family: var(--mono); font-size: 7px; letter-spacing: .18em; color: #9AA3AF; margin-bottom: 10px; text-transform: uppercase;">STA 01 · 跑通 → 管住 → 扩展</div>
+                  <div style="font-size: 20px; font-weight: 800; line-height: 1.26; color: #1B2430;">先划清边界，<br>再让它写代码</div>
+                  <div style="font-size: 8px; line-height: 1.75; color: #6B7684; margin-top: 11px;">官方文档写得不差，中文版也是 OpenAI 自己维护的。缺的不是翻译，是顺序。</div>
+                  <div style="display: flex; gap: 7px; margin-top: 14px;">
+                    <span style="padding: 5px 11px; border-radius: 4px; background: #10A37F; font-size: 8px; color: #fff; font-weight: 600;">从快速上手开始</span>
+                    <span style="padding: 5px 11px; border-radius: 4px; border: 1px solid rgba(0,0,0,0.14); font-size: 8px; color: #46536A;">官方文档镜像</span>
+                  </div>
+                  <div style="display: flex; gap: 6px; margin-top: 16px;">
+                    <span style="padding: 4px 9px; border-radius: 3px; background: #F1F4F8; font-size: 7px; color: #46536A;">沙盒与审批</span>
+                    <span style="padding: 4px 9px; border-radius: 3px; background: #F1F4F8; font-size: 7px; color: #46536A;">AGENTS.md</span>
+                    <span style="padding: 4px 9px; border-radius: 3px; background: #F1F4F8; font-size: 7px; color: #46536A;">MCP</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <!-- ── 04 workbuddybook : 图左 文右 ── -->
+        <div class="grp" data-work="book">
+        <div class="card rc" style="display: grid; grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr);">
+          <div style="background: var(--bg3); border-right: 1px solid var(--line); padding: 36px 36px 0; display: flex; align-items: flex-end; overflow: hidden;">
+            <div class="shot" style="width: 100%; background: #FFFFFF; border: 1px solid rgba(0,0,0,0.09); border-radius: 5px 5px 0 0; overflow: hidden; box-shadow: 0 18px 44px rgba(0,0,0,0.32);">
+              <div style="display: flex; align-items: center; gap: 10px; padding: 10px 15px; border-bottom: 1px solid rgba(0,0,0,0.07);">
+                <span style="width: 14px; height: 14px; border-radius: 4px; background: #6C5CE7;"></span>
+                <span style="font-size: 9.5px; font-weight: 700; color: #1B2430;">WorkBuddy 手册</span>
+                <span style="flex: 1;"></span>
+                <span style="font-size: 8px; color: #7A8492;">快速上手</span>
+                <span style="font-size: 8px; color: #7A8492;">进阶教程</span>
+                <span style="font-size: 8px; color: #7A8492;">实战案例</span>
+                <span style="font-size: 8px; color: #7A8492;">参考</span>
+                <span style="padding: 3px 7px; border-radius: 3px; border: 1px solid rgba(0,0,0,0.12); font-size: 7px; color: #46536A;">简 / 繁 / EN</span>
+              </div>
+              <div style="padding: 26px 24px 20px; display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 16px; align-items: center;">
+                <div style="display: flex; flex-direction: column; gap: 9px;">
+                  <div style="font-size: 22px; font-weight: 800; line-height: 1.2; color: #1B2430;">WorkBuddy 手册</div>
+                  <div style="font-size: 12px; font-weight: 600; color: #6C5CE7; line-height: 1.35;">中文教程与实战指南</div>
+                  <div style="font-size: 8px; line-height: 1.75; color: #6B7684;">非官方社区教程。整理自公开文档与实测记录，从装上到把它接进日常工作。</div>
+                  <div style="display: flex; gap: 7px; margin-top: 5px;">
+                    <span style="padding: 5px 11px; border-radius: 16px; background: #6C5CE7; font-size: 8px; color: #fff; font-weight: 600;">从快速上手开始</span>
+                    <span style="padding: 5px 11px; border-radius: 16px; background: rgba(0,0,0,0.05); font-size: 8px; color: #46536A;">看实战案例</span>
+                  </div>
+                </div>
+                <div style="aspect-ratio: 1; border-radius: 18px; background: radial-gradient(circle at 32% 28%, #A99BFF, #5B4BD6 74%); opacity: .92;"></div>
+              </div>
+              <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 0 24px 22px;">
+                <div style="padding: 10px; border-radius: 6px; background: #F4F4FB; display: flex; flex-direction: column; gap: 4px;">
+                  <span style="font-size: 12px; font-weight: 800; color: #6C5CE7;">8</span>
+                  <span style="font-size: 7px; color: #6B7684;">快速上手</span>
+                </div>
+                <div style="padding: 10px; border-radius: 6px; background: #F4F4FB; display: flex; flex-direction: column; gap: 4px;">
+                  <span style="font-size: 12px; font-weight: 800; color: #6C5CE7;">11</span>
+                  <span style="font-size: 7px; color: #6B7684;">进阶教程</span>
+                </div>
+                <div style="padding: 10px; border-radius: 6px; background: #F4F4FB; display: flex; flex-direction: column; gap: 4px;">
+                  <span style="font-size: 12px; font-weight: 800; color: #6C5CE7;">12</span>
+                  <span style="font-size: 7px; color: #6B7684;">实战案例</span>
+                </div>
+                <div style="padding: 10px; border-radius: 6px; background: #F4F4FB; display: flex; flex-direction: column; gap: 4px;">
+                  <span style="font-size: 12px; font-weight: 800; color: #6C5CE7;">7</span>
+                  <span style="font-size: 7px; color: #6B7684;">参考</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="padding: 44px 44px 40px; display: flex; flex-direction: column;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 26px;">
+              <span class="mono" style="font-size: 10px; color: var(--accent);">WORK · 04</span>
+              <span style="width: 26px; height: 1px; background: var(--line2);"></span>
+              <span class="mono" style="font-size: 10px; color: var(--fg3);">AI 手册 · 开源</span>
+            </div>
+            <h3 style="margin: 0 0 6px; font-size: 30px; font-weight: 700; line-height: 1.3; color: var(--fg);">WorkBuddy 手册</h3>
+            <div class="mono" style="font-size: 11px; color: var(--fg3); margin-bottom: 20px;">WORKBUDDYBOOK</div>
+            <p style="margin: 0 0 16px; font-size: 14.5px; line-height: 1.88; color: var(--fg2);">38 篇：8 篇上手、11 篇进阶、12 个实战案例，外加 FAQ、排错与错误码、提示词模板库、零成本 Skill 精选、积分与套餐、术语表。</p>
+            <p style="margin: 0 0 28px; font-size: 13px; line-height: 1.8; color: var(--fg3);">非官方社区教程，内容来自公开文档和我自己的实测记录，产品功能以官方最新说明为准——这句话写在首页最上面，不藏在页脚。</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 30px;">
+              <span class="chip" style="cursor: default; pointer-events: none;">简 · 繁 · EN</span>
+              <span class="chip" style="cursor: default; pointer-events: none;">12 个实战案例</span>
+              <span class="chip" style="cursor: default; pointer-events: none;">提示词模板库</span>
+            </div>
+            <span style="flex: 1;"></span>
+            <a href="https://neohoy.github.io/workbuddybook/" target="_blank" style="display: inline-flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 500;">在线阅读 <span class="arrow">→</span></a>
+          </div>
+        </div>
+        </div>
+
+        <!-- ── 05 Yanfly 插件文档 : 文左 图右 ── -->
+        <div class="grp" data-work="game">
+        <div class="card rc" style="display: grid; grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);">
+          <div style="padding: 44px 44px 40px; display: flex; flex-direction: column;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 26px;">
+              <span class="mono" style="font-size: 10px; color: var(--accent);">WORK · 05</span>
+              <span style="width: 26px; height: 1px; background: var(--line2);"></span>
+              <span class="mono" style="font-size: 10px; color: var(--fg3);">游戏开发 · 开源</span>
+            </div>
+            <h3 style="margin: 0 0 6px; font-size: 30px; font-weight: 700; line-height: 1.3; color: var(--fg);">Yanfly 插件中文文档</h3>
+            <div class="mono" style="font-size: 11px; color: var(--fg3); margin-bottom: 20px;">RPG MAKER MV · YEP</div>
+            <p style="margin: 0 0 16px; font-size: 14.5px; line-height: 1.88; color: var(--fg2);">RPG Maker MV 上用得最多的插件库，官方说明<strong style="color: var(--fg); font-weight: 500;">只有英文</strong>。131 篇逐段中英对照，英文原文和中文翻译交替排列，备注标签与插件指令一律保留原文——照着抄不会抄错。</p>
+            <p style="margin: 0 0 28px; font-size: 13px; line-height: 1.8; color: var(--fg3);">首页是个不依赖任何外部资源的单文件，打开就能按中文名、英文名或编号搜。插件本体版权归 Yanfly，这里只做翻译。</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 30px;">
+              <span class="chip" style="cursor: default; pointer-events: none;">131 篇</span>
+              <span class="chip" style="cursor: default; pointer-events: none;">10 个分类</span>
+              <span class="chip" style="cursor: default; pointer-events: none;">YEP.1–128</span>
+              <span class="chip" style="cursor: default; pointer-events: none;">中英对照</span>
+            </div>
+            <span style="flex: 1;"></span>
+            <a href="https://neohoy.github.io/RPG-Maker-MV/" target="_blank" style="display: inline-flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 500;">打开首页 <span class="arrow">→</span></a>
+          </div>
+          <div style="background: var(--bg3); border-left: 1px solid var(--line); padding: 36px 36px 0; display: flex; align-items: flex-end; overflow: hidden;">
+            <div class="shot" style="width: 100%; background: #14161C; border: 1px solid rgba(255,255,255,0.09); border-radius: 5px 5px 0 0; overflow: hidden; box-shadow: 0 18px 44px rgba(0,0,0,0.42);">
+              <div style="display: flex; align-items: center; gap: 8px; padding: 11px 15px; border-bottom: 1px solid rgba(255,255,255,0.07);">
+                <span style="font-size: 9px; font-weight: 700; color: #E8ECF3;">Yanfly Engine Plugins 中文文档</span>
+                <span style="flex: 1;"></span>
+                <span style="font-size: 7px; color: rgba(255,255,255,0.42);">RPG Maker MV</span>
+                <span style="width: 14px; height: 14px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.18);"></span>
+              </div>
+              <div style="padding: 20px 20px 0;">
+                <div style="display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 5px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.09);">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+                  <span style="font-size: 8px; color: rgba(255,255,255,0.38);">按中文名、英文名或编号搜索…</span>
+                  <span style="flex: 1;"></span>
+                  <span style="padding: 2px 6px; border-radius: 3px; background: rgba(255,255,255,0.1); font-size: 7px; color: rgba(255,255,255,0.5);">/</span>
+                </div>
+                <div style="display: flex; gap: 6px; margin-top: 12px; flex-wrap: wrap;">
+                  <span style="padding: 4px 10px; border-radius: 12px; background: #4A7DFF; font-size: 7.5px; color: #fff; font-weight: 600;">全部 131</span>
+                  <span style="padding: 4px 10px; border-radius: 12px; background: rgba(255,255,255,0.07); font-size: 7.5px; color: rgba(255,255,255,0.55);">战斗</span>
+                  <span style="padding: 4px 10px; border-radius: 12px; background: rgba(255,255,255,0.07); font-size: 7.5px; color: rgba(255,255,255,0.55);">菜单</span>
+                  <span style="padding: 4px 10px; border-radius: 12px; background: rgba(255,255,255,0.07); font-size: 7.5px; color: rgba(255,255,255,0.55);">状态</span>
+                  <span style="padding: 4px 10px; border-radius: 12px; background: rgba(255,255,255,0.07); font-size: 7.5px; color: rgba(255,255,255,0.55);">技能</span>
+                  <span style="padding: 4px 10px; border-radius: 12px; background: rgba(255,255,255,0.07); font-size: 7.5px; color: rgba(255,255,255,0.55);">地图</span>
+                </div>
+              </div>
+              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 14px 20px 20px;">
+                <div style="padding: 11px; border-radius: 5px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.07); display: flex; flex-direction: column; gap: 5px;">
+                  <span style="font-family: var(--mono); font-size: 6.5px; color: #4A7DFF; letter-spacing: .1em;">YEP.1</span>
+                  <span style="font-size: 8px; font-weight: 600; color: #E8ECF3;">核心引擎</span>
+                  <span style="font-size: 6.5px; color: rgba(255,255,255,0.38);">Core Engine</span>
+                </div>
+                <div style="padding: 11px; border-radius: 5px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.07); display: flex; flex-direction: column; gap: 5px;">
+                  <span style="font-family: var(--mono); font-size: 6.5px; color: #4A7DFF; letter-spacing: .1em;">YEP.12</span>
+                  <span style="font-size: 8px; font-weight: 600; color: #E8ECF3;">战斗引擎核心</span>
+                  <span style="font-size: 6.5px; color: rgba(255,255,255,0.38);">Battle Engine Core</span>
+                </div>
+                <div style="padding: 11px; border-radius: 5px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.07); display: flex; flex-direction: column; gap: 5px;">
+                  <span style="font-family: var(--mono); font-size: 6.5px; color: #4A7DFF; letter-spacing: .1em;">YEP.50</span>
+                  <span style="font-size: 8px; font-weight: 600; color: #E8ECF3;">状态核心</span>
+                  <span style="font-size: 6.5px; color: rgba(255,255,255,0.38);">Buffs &amp; States Core</span>
+                </div>
+              </div>
+              <div style="display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(255,255,255,0.07);">
+                <div style="padding: 12px 10px; border-right: 1px solid rgba(255,255,255,0.07); display: flex; flex-direction: column; gap: 3px; align-items: center;">
+                  <span style="font-size: 13px; font-weight: 800; color: #E8ECF3;">131</span>
+                  <span style="font-size: 6.5px; color: rgba(255,255,255,0.4);">篇插件文档</span>
+                </div>
+                <div style="padding: 12px 10px; border-right: 1px solid rgba(255,255,255,0.07); display: flex; flex-direction: column; gap: 3px; align-items: center;">
+                  <span style="font-size: 13px; font-weight: 800; color: #E8ECF3;">10</span>
+                  <span style="font-size: 6.5px; color: rgba(255,255,255,0.4);">个功能分类</span>
+                </div>
+                <div style="padding: 12px 10px; border-right: 1px solid rgba(255,255,255,0.07); display: flex; flex-direction: column; gap: 3px; align-items: center;">
+                  <span style="font-size: 10px; font-weight: 800; color: #E8ECF3;">YEP.1–128</span>
+                  <span style="font-size: 6.5px; color: rgba(255,255,255,0.4);">覆盖编号</span>
+                </div>
+                <div style="padding: 12px 10px; display: flex; flex-direction: column; gap: 3px; align-items: center;">
+                  <span style="font-size: 13px; font-weight: 800; color: #E8ECF3;">100%</span>
+                  <span style="font-size: 6.5px; color: rgba(255,255,255,0.4);">中英对照</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <!-- ── 06 bitbuild : 文左 图右 ── -->
+        <div class="grp" data-work="media">
+        <div class="card rc" style="display: grid; grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);">
+          <div style="padding: 44px 44px 40px; display: flex; flex-direction: column;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 26px;">
+              <span class="mono" style="font-size: 10px; color: var(--accent);">WORK · 06</span>
               <span style="width: 26px; height: 1px; background: var(--line2);"></span>
               <span class="mono" style="font-size: 10px; color: var(--fg3);">公众号 · 持续更新</span>
             </div>
@@ -683,7 +901,7 @@ img { max-width: 100%; }
         </div>
         </div>
 
-        <!-- ── 04 NEO 造物集 : 图左 文右 ── -->
+        <!-- ── 07 NEO 造物集 : 图左 文右 ── -->
         <div class="grp" data-work="make">
         <div class="card rc" style="display: grid; grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr);">
           <div class="grid-bg" style="border-right: 1px solid var(--line); background-color: var(--paper); display: flex; align-items: center; justify-content: center; padding: 40px;">
@@ -712,7 +930,7 @@ img { max-width: 100%; }
           </div>
           <div style="padding: 44px 44px 42px; display: flex; flex-direction: column;">
             <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 26px;">
-              <span class="mono" style="font-size: 10px; color: var(--accent);">WORK · 04</span>
+              <span class="mono" style="font-size: 10px; color: var(--accent);">WORK · 07</span>
               <span style="width: 26px; height: 1px; background: var(--line2);"></span>
               <span class="mono" style="font-size: 10px; color: var(--fg3);">造物 · 长期进行中</span>
             </div>
@@ -889,7 +1107,7 @@ img { max-width: 100%; }
         <div class="rc" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; padding: 46px 44px 48px;">
           <div>
             <h3 class="serif" style="margin: 0 0 16px; font-size: 27px; font-weight: 600; color: var(--fg);">neohoy</h3>
-            <p style="margin: 0 0 20px; font-size: 14.5px; line-height: 1.9; color: var(--fg2);">两本手册的源码都在这儿，都是可以直接 clone 下来本地跑的静态站。发现哪句写错了，欢迎直接提 PR——比留言更省事。</p>
+            <p style="margin: 0 0 20px; font-size: 14.5px; line-height: 1.9; color: var(--fg2);">四本中文手册和 Yanfly 插件文档的源码都在这儿，都是能直接 clone 下来本地跑的静态站。发现哪句写错了，欢迎直接提 PR——比留言更省事。</p>
             <a href="https://github.com/neohoy" target="_blank" style="display: inline-flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 500;">github.com/neohoy <span class="arrow">→</span></a>
           </div>
           <div style="display: flex; flex-direction: column; gap: 12px;">
@@ -907,10 +1125,27 @@ img { max-width: 100%; }
               </div>
               <span class="mono" style="font-size: 10px; color: var(--fg3);">37 DOCS</span>
             </a>
-            <div class="linkrow dashed" style="cursor: default;">
-              <span style="font-size: 13px; color: var(--fg3);">还有想公开的仓库，加在这里</span>
-              <span class="ph">待填</span>
-            </div>
+            <a href="https://github.com/neohoy/codexbook" target="_blank" class="linkrow" style="text-decoration: none;">
+              <div style="display: flex; flex-direction: column; gap: 5px;">
+                <span style="font-size: 14px; color: var(--fg);">codexbook</span>
+                <span style="font-size: 12px; color: var(--fg3);">Codex 中文手册 · 官方镜像 + 重排路线</span>
+              </div>
+              <span class="mono" style="font-size: 10px; color: var(--fg3);">133 DOCS</span>
+            </a>
+            <a href="https://github.com/neohoy/workbuddybook" target="_blank" class="linkrow" style="text-decoration: none;">
+              <div style="display: flex; flex-direction: column; gap: 5px;">
+                <span style="font-size: 14px; color: var(--fg);">workbuddybook</span>
+                <span style="font-size: 12px; color: var(--fg3);">WorkBuddy 手册 · 简 / 繁 / EN</span>
+              </div>
+              <span class="mono" style="font-size: 10px; color: var(--fg3);">38 DOCS</span>
+            </a>
+            <a href="https://github.com/neohoy/RPG-Maker-MV" target="_blank" class="linkrow" style="text-decoration: none;">
+              <div style="display: flex; flex-direction: column; gap: 5px;">
+                <span style="font-size: 14px; color: var(--fg);">RPG-Maker-MV</span>
+                <span style="font-size: 12px; color: var(--fg3);">Yanfly 插件汉化 · 中英对照</span>
+              </div>
+              <span class="mono" style="font-size: 10px; color: var(--fg3);">131 DOCS</span>
+            </a>
           </div>
         </div>
         </div>

@@ -1,6 +1,7 @@
-# Claude Design 画布产物（2.9MB，可由 design/ 重新生成，不入库）
-niushu-ip-homepage.html
 
-.DS_Store
-__pycache__/
+# Claude Design 画布产物（2.9MB，可由 design/ 重新生成，不入库）
 *.pyc
+.DS_Store
+.design-base
+__pycache__/
+niushu-ip-homepage.html

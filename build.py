@@ -30,13 +30,17 @@ body = src[src.index('<div class="page {{themeClass}}"'): src.index('</x-dc>')]
 body = body.replace('{{themeClass}}', 'ink').replace('{{accent}}', ACCENT)
 for k in ('top', 'works', 'content', 'contact'):
     body = body.replace('onClick="{{go.%s}}"' % k, 'data-go="%s"' % k)
-for k in ('all', 'book', 'media', 'make'):
+# 分类不写死，直接从设计稿里读出来 —— 以后加分类不用改这里
+FILTERS = re.findall(r'class="chip \{\{sel\.(\w+)\}\}"', body)
+if 'all' not in FILTERS:
+    raise SystemExit('作品筛选里找不到「全部」，分类解析失败')
+for k in FILTERS:
     body = body.replace('class="chip {{sel.%s}}" onClick="{{pick.%s}}"' % (k, k),
                         'class="chip" data-filter="%s"' % k)
 for k in ('wechat', 'xhs', 'x', 'gh'):
     body = body.replace('class="tab {{ch.%s}}" onClick="{{tab.%s}}"' % (k, k),
                         'class="tab" data-tab="%s"' % k)
-for k in ('book', 'media', 'make'):
+for k in [f for f in FILTERS if f != 'all']:
     body = body.replace('<sc-if value="{{show.%s}}" hint-placeholder-val="{{ true }}">' % k,
                         '<div class="grp" data-work="%s">' % k)
 for k in ('wechat', 'xhs', 'x', 'gh'):
