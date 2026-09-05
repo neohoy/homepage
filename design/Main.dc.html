@@ -367,8 +367,8 @@
     <div style="max-width: 1200px; margin: 0 auto; padding: 0 48px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));">
       <div style="padding: 34px 30px 34px 0; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 9px;">
         <span class="mono" style="font-size: 10px; color: var(--fg3);">REEL 01</span>
-        <span class="serif" style="font-size: 40px; font-weight: 900; line-height: 1; color: var(--fg);">4<span style="font-size: 17px; font-weight: 600; margin-left: 4px; color: var(--fg2);">条线</span></span>
-        <span style="font-size: 12.5px; color: var(--fg2);">手册 · 观察 · 造物 · 受托</span>
+        <span class="serif" style="font-size: 40px; font-weight: 900; line-height: 1; color: var(--fg);">5<span style="font-size: 17px; font-weight: 600; margin-left: 4px; color: var(--fg2);">条线</span></span>
+        <span style="font-size: 12.5px; color: var(--fg2);">手册 · 观察 · 造物 · 游戏 · 受托</span>
       </div>
       <div style="padding: 34px 30px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 9px;">
         <span class="mono" style="font-size: 10px; color: var(--fg3);">REEL 02</span>
@@ -416,7 +416,8 @@
           <div class="chip" onClick="{{go.sBook}}">01 中文手册</div>
           <div class="chip" onClick="{{go.sBit}}">02 建造观察局</div>
           <div class="chip" onClick="{{go.sNeo}}">03 造物集</div>
-          <div class="chip" onClick="{{go.sStrait}}">04 海峡助手</div>
+          <div class="chip" onClick="{{go.sGame}}">04 游戏开发</div>
+          <div class="chip" onClick="{{go.sStrait}}">05 海峡助手</div>
         </div>
       </div>
 
@@ -425,10 +426,10 @@
         <div style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;">
           <span class="mono" style="font-size: 10.5px; color: var(--accent);">SERIES 01</span>
           <h3 class="serif" style="margin: 0; font-size: 30px; font-weight: 700; color: var(--fg);">中文手册</h3>
-          <span class="mono" style="font-size: 10.5px; color: var(--fg3);">五个站</span>
+          <span class="mono" style="font-size: 10.5px; color: var(--fg3);">四个站</span>
           <span style="flex: 1; height: 1px; background: var(--line); align-self: center; min-width: 40px;"></span>
         </div>
-        <p style="margin: 14px 0 0; font-size: 15px; line-height: 1.85; color: var(--fg2); max-width: 60ch;"><strong style="color: var(--fg); font-weight: 500;">官方文档不是没有，是没有顺序。</strong>把平铺在官方目录里的原文重排成一条能从头读到尾的路线，官方目录原样留着，要查什么还按原来的位置找。五个站同一个做法，只是对象不同——最后那个是给游戏开发者的。</p>
+        <p style="margin: 14px 0 0; font-size: 15px; line-height: 1.85; color: var(--fg2); max-width: 60ch;"><strong style="color: var(--fg); font-weight: 500;">官方文档不是没有，是没有顺序。</strong>把平铺在官方目录里的原文重排成一条能从头读到尾的路线，官方目录原样留着，要查什么还按原来的位置找。四个站同一个做法，只是对象不同。</p>
       </div>
 <!-- ── 01 claudebook : 文左 图右 ── -->
         <div class="card" style="display: grid; grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);">
@@ -538,18 +539,6 @@
               <p style="margin: 0; font-size: 13.5px; line-height: 1.75; color: var(--fg2);">38 篇，简繁英三版。除了上手和进阶，还有排错与错误码、提示词模板库、零成本 Skill 精选。非官方社区教程，功能以官方最新说明为准。</p>
             </div>
             <div class="rowtags"><span class="rowtag">简 · 繁 · EN</span><span class="rowtag">12 个案例</span></div>
-            <span class="arrow" style="color: var(--fg3); flex-shrink: 0;">→</span>
-          </a>
-          <a class="workrow" href="https://neohoy.github.io/RPG-Maker-MV/" target="_blank">
-            <span class="mono rownum">01 — 5</span>
-            <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px;">
-              <div style="display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;">
-                <span style="font-size: 18px; font-weight: 600; color: var(--fg);">Yanfly 插件中文文档</span>
-                <span class="mono" style="font-size: 10px; color: var(--fg3);">RPG MAKER MV · YEP</span>
-              </div>
-              <p style="margin: 0; font-size: 13.5px; line-height: 1.75; color: var(--fg2);">换个题材，同一个做法。RPG Maker MV 上用得最多的插件库只有英文说明，131 篇逐段中英对照，备注标签与插件指令保留原文，照着抄不会抄错。</p>
-            </div>
-            <div class="rowtags"><span class="rowtag">131 篇</span><span class="rowtag">中英对照</span></div>
             <span class="arrow" style="color: var(--fg3); flex-shrink: 0;">→</span>
           </a>
         </div>
@@ -727,9 +716,114 @@
             <span class="arrow" style="color: var(--fg3); flex-shrink: 0;"></span>
           </a>
         </div>
-      <div class="grouphead" id="series-strait">
+      <div class="grouphead" id="series-game">
         <div style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;">
           <span class="mono" style="font-size: 10.5px; color: var(--accent);">SERIES 04</span>
+          <h3 class="serif" style="margin: 0; font-size: 30px; font-weight: 700; color: var(--fg);">游戏开发</h3>
+          <span class="mono" style="font-size: 10.5px; color: var(--fg3);">文档 + 社群</span>
+          <span style="flex: 1; height: 1px; background: var(--line); align-self: center; min-width: 40px;"></span>
+        </div>
+        <p style="margin: 14px 0 0; font-size: 15px; line-height: 1.85; color: var(--fg2); max-width: 60ch;"><strong style="color: var(--fg); font-weight: 500;">把文档翻完，再把用它的人聚起来。</strong>RPG Maker MV 是个中文资料稀薄的圈子。先补上最缺的那份说明书，再守着一个群，让踩过坑的人能碰上还在踩的人——两件事得一起做才有用。</p>
+      </div>
+        <div class="card" style="display: grid; grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);">
+          <div style="padding: 44px 44px 40px; display: flex; flex-direction: column;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 26px;">
+              <span class="mono" style="font-size: 10px; color: var(--accent);">WORK · 04 — 1</span>
+              <span style="width: 26px; height: 1px; background: var(--line2);"></span>
+              <span class="mono" style="font-size: 10px; color: var(--fg3);">游戏开发 · 开源</span>
+            </div>
+            <h3 style="margin: 0 0 6px; font-size: 30px; font-weight: 700; line-height: 1.3; color: var(--fg);">Yanfly 插件中文文档</h3>
+            <div class="mono" style="font-size: 11px; color: var(--fg3); margin-bottom: 20px;">RPG MAKER MV · YEP</div>
+            <p style="margin: 0 0 16px; font-size: 14.5px; line-height: 1.88; color: var(--fg2);">RPG Maker MV 上用得最多的插件库，官方说明<strong style="color: var(--fg); font-weight: 500;">只有英文</strong>。131 篇逐段中英对照，英文原文和中文翻译交替排列，备注标签与插件指令一律保留原文——照着抄不会抄错。</p>
+            <p style="margin: 0 0 28px; font-size: 13px; line-height: 1.8; color: var(--fg3);">首页是个不依赖任何外部资源的单文件，打开就能按中文名、英文名或编号搜。插件本体版权归 Yanfly，这里只做翻译。</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 30px;">
+              <span class="chip" style="cursor: default; pointer-events: none;">131 篇</span>
+              <span class="chip" style="cursor: default; pointer-events: none;">10 个分类</span>
+              <span class="chip" style="cursor: default; pointer-events: none;">YEP.1–128</span>
+              <span class="chip" style="cursor: default; pointer-events: none;">中英对照</span>
+            </div>
+            <span style="flex: 1;"></span>
+            <a href="https://neohoy.github.io/RPG-Maker-MV/" target="_blank" style="display: inline-flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 500;">打开首页 <span class="arrow">→</span></a>
+          </div>
+          <div style="background: var(--bg3); border-left: 1px solid var(--line); padding: 36px 36px 0; display: flex; align-items: flex-end; overflow: hidden;">
+            <div class="shot" style="width: 100%; background: #14161C; border: 1px solid rgba(255,255,255,0.09); border-radius: 5px 5px 0 0; overflow: hidden; box-shadow: 0 18px 44px rgba(0,0,0,0.42);">
+              <div style="display: flex; align-items: center; gap: 8px; padding: 11px 15px; border-bottom: 1px solid rgba(255,255,255,0.07);">
+                <span style="font-size: 9px; font-weight: 700; color: #E8ECF3;">Yanfly Engine Plugins 中文文档</span>
+                <span style="flex: 1;"></span>
+                <span style="font-size: 7px; color: rgba(255,255,255,0.42);">RPG Maker MV</span>
+                <span style="width: 14px; height: 14px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.18);"></span>
+              </div>
+              <div style="padding: 20px 20px 0;">
+                <div style="display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 5px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.09);">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+                  <span style="font-size: 8px; color: rgba(255,255,255,0.38);">按中文名、英文名或编号搜索…</span>
+                  <span style="flex: 1;"></span>
+                  <span style="padding: 2px 6px; border-radius: 3px; background: rgba(255,255,255,0.1); font-size: 7px; color: rgba(255,255,255,0.5);">/</span>
+                </div>
+                <div style="display: flex; gap: 6px; margin-top: 12px; flex-wrap: wrap;">
+                  <span style="padding: 4px 10px; border-radius: 12px; background: #4A7DFF; font-size: 7.5px; color: #fff; font-weight: 600;">全部 131</span>
+                  <span style="padding: 4px 10px; border-radius: 12px; background: rgba(255,255,255,0.07); font-size: 7.5px; color: rgba(255,255,255,0.55);">战斗</span>
+                  <span style="padding: 4px 10px; border-radius: 12px; background: rgba(255,255,255,0.07); font-size: 7.5px; color: rgba(255,255,255,0.55);">菜单</span>
+                  <span style="padding: 4px 10px; border-radius: 12px; background: rgba(255,255,255,0.07); font-size: 7.5px; color: rgba(255,255,255,0.55);">状态</span>
+                  <span style="padding: 4px 10px; border-radius: 12px; background: rgba(255,255,255,0.07); font-size: 7.5px; color: rgba(255,255,255,0.55);">技能</span>
+                  <span style="padding: 4px 10px; border-radius: 12px; background: rgba(255,255,255,0.07); font-size: 7.5px; color: rgba(255,255,255,0.55);">地图</span>
+                </div>
+              </div>
+              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 14px 20px 20px;">
+                <div style="padding: 11px; border-radius: 5px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.07); display: flex; flex-direction: column; gap: 5px;">
+                  <span style="font-family: var(--mono); font-size: 6.5px; color: #4A7DFF; letter-spacing: .1em;">YEP.1</span>
+                  <span style="font-size: 8px; font-weight: 600; color: #E8ECF3;">核心引擎</span>
+                  <span style="font-size: 6.5px; color: rgba(255,255,255,0.38);">Core Engine</span>
+                </div>
+                <div style="padding: 11px; border-radius: 5px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.07); display: flex; flex-direction: column; gap: 5px;">
+                  <span style="font-family: var(--mono); font-size: 6.5px; color: #4A7DFF; letter-spacing: .1em;">YEP.12</span>
+                  <span style="font-size: 8px; font-weight: 600; color: #E8ECF3;">战斗引擎核心</span>
+                  <span style="font-size: 6.5px; color: rgba(255,255,255,0.38);">Battle Engine Core</span>
+                </div>
+                <div style="padding: 11px; border-radius: 5px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.07); display: flex; flex-direction: column; gap: 5px;">
+                  <span style="font-family: var(--mono); font-size: 6.5px; color: #4A7DFF; letter-spacing: .1em;">YEP.50</span>
+                  <span style="font-size: 8px; font-weight: 600; color: #E8ECF3;">状态核心</span>
+                  <span style="font-size: 6.5px; color: rgba(255,255,255,0.38);">Buffs &amp; States Core</span>
+                </div>
+              </div>
+              <div style="display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(255,255,255,0.07);">
+                <div style="padding: 12px 10px; border-right: 1px solid rgba(255,255,255,0.07); display: flex; flex-direction: column; gap: 3px; align-items: center;">
+                  <span style="font-size: 13px; font-weight: 800; color: #E8ECF3;">131</span>
+                  <span style="font-size: 6.5px; color: rgba(255,255,255,0.4);">篇插件文档</span>
+                </div>
+                <div style="padding: 12px 10px; border-right: 1px solid rgba(255,255,255,0.07); display: flex; flex-direction: column; gap: 3px; align-items: center;">
+                  <span style="font-size: 13px; font-weight: 800; color: #E8ECF3;">10</span>
+                  <span style="font-size: 6.5px; color: rgba(255,255,255,0.4);">个功能分类</span>
+                </div>
+                <div style="padding: 12px 10px; border-right: 1px solid rgba(255,255,255,0.07); display: flex; flex-direction: column; gap: 3px; align-items: center;">
+                  <span style="font-size: 10px; font-weight: 800; color: #E8ECF3;">YEP.1–128</span>
+                  <span style="font-size: 6.5px; color: rgba(255,255,255,0.4);">覆盖编号</span>
+                </div>
+                <div style="padding: 12px 10px; display: flex; flex-direction: column; gap: 3px; align-items: center;">
+                  <span style="font-size: 13px; font-weight: 800; color: #E8ECF3;">100%</span>
+                  <span style="font-size: 6.5px; color: rgba(255,255,255,0.4);">中英对照</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="rowlist">
+          <a class="workrow" href="javascript:void(0)">
+            <span class="mono rownum">04 — 2</span>
+            <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px;">
+              <div style="display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;">
+                <span style="font-size: 18px; font-weight: 600; color: var(--fg);">Game Maker Monster School</span>
+                <span class="mono" style="font-size: 10px; color: var(--fg3);">游戏制作群 · 群主</span>
+              </div>
+              <p style="margin: 0; font-size: 13.5px; line-height: 1.75; color: var(--fg2);">近 1900 人的游戏制作群，我是群主。[ 一句话说清群里主要在聊什么、有什么规矩 ]</p>
+            </div>
+            <div class="rowtags"><span class="rowtag">近 1900 人</span><span class="rowtag">群主</span><span class="rowtag">待补</span></div>
+            <span class="arrow" style="color: var(--fg3); flex-shrink: 0;"></span>
+          </a>
+        </div>
+      <div class="grouphead" id="series-strait">
+        <div style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;">
+          <span class="mono" style="font-size: 10.5px; color: var(--accent);">SERIES 05</span>
           <h3 class="serif" style="margin: 0; font-size: 30px; font-weight: 700; color: var(--fg);">海峡助手</h3>
           <span class="mono" style="font-size: 10.5px; color: var(--fg3);">公众号 + 小程序</span>
           <span style="flex: 1; height: 1px; background: var(--line); align-self: center; min-width: 40px;"></span>
@@ -738,7 +832,7 @@
       </div>
         <div class="rowlist">
           <a class="workrow" href="javascript:void(0)">
-            <span class="mono rownum">04 — 1</span>
+            <span class="mono rownum">05 — 1</span>
             <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px;">
               <div style="display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;">
                 <span style="font-size: 18px; font-weight: 600; color: var(--fg);">海峡助手</span>
@@ -1034,6 +1128,7 @@ class Component extends DCLogic {
         sBook: () => this.scrollTo('series-book'),
         sBit: () => this.scrollTo('series-bitbuild'),
         sNeo: () => this.scrollTo('series-neo'),
+        sGame: () => this.scrollTo('series-game'),
         sStrait: () => this.scrollTo('series-strait')
       }
     };
