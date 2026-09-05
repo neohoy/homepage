@@ -28,12 +28,15 @@ body = src[src.index('<div class="page {{themeClass}}"'): src.index('</x-dc>')]
 
 # ── 模板洞 → 静态属性 ──────────────────────────────────────────
 body = body.replace('{{themeClass}}', 'ink').replace('{{accent}}', ACCENT)
-for k in ('top', 'works', 'content', 'contact'):
-    body = body.replace('onClick="{{go.%s}}"' % k, 'data-go="%s"' % k)
+# 滚动锚点：从设计稿逻辑里解析 key → 元素 id，脚本不写死
+logic_src = src[src.index('<script data-dc-script'):]
+GO = dict(re.findall(r"(\w+):\s*\(\)\s*=>\s*this\.scrollTo\('([\w-]+)'\)", logic_src))
+for k, anchor in GO.items():
+    body = body.replace('onClick="{{go.%s}}"' % k, 'data-go="%s"' % anchor)
+if '{{go.' in body:
+    raise SystemExit('还有没解析的滚动锚点: ' + body[body.index('{{go.'):body.index('{{go.') + 60])
 # 分类不写死，直接从设计稿里读出来 —— 以后加分类不用改这里
 FILTERS = re.findall(r'class="chip \{\{sel\.(\w+)\}\}"', body)
-if 'all' not in FILTERS:
-    raise SystemExit('作品筛选里找不到「全部」，分类解析失败')
 for k in FILTERS:
     body = body.replace('class="chip {{sel.%s}}" onClick="{{pick.%s}}"' % (k, k),
                         'class="chip" data-filter="%s"' % k)
