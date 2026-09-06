@@ -114,6 +114,7 @@ EXTRA = '''
       .secHead { flex-wrap: wrap !important; gap: 26px !important; }
       .chipRow { flex-wrap: wrap; flex-shrink: 1 !important; width: 100%; padding-bottom: 0 !important; }
       .epigraph { white-space: normal !important; text-wrap: pretty !important; max-width: 100% !important; font-size: 24px !important; }
+      .heroClose > p.serif { font-size: 44px !important; }
       .navLinks { gap: 20px !important; }
       .navLinks .navlink { font-size: 12.5px !important; }
       .tabRow { flex-wrap: wrap; }
@@ -134,6 +135,7 @@ EXTRA = '''
       .card.rc > div:first-child { padding: 22px 22px 0 !important; }
       .chip { min-height: 44px; display: inline-flex; align-items: center; }
       .epigraph { font-size: 20px !important; line-height: 1.8 !important; }
+      .heroClose > p.serif { font-size: 32px !important; white-space: normal !important; line-height: 1.36 !important; }
       .kicker { gap: 9px !important; margin-bottom: 22px !important; }
       .kicker .mono { font-size: 8.5px !important; letter-spacing: .12em !important; white-space: nowrap; }
       .btn { height: 48px; }
@@ -141,6 +143,7 @@ EXTRA = '''
     @media (max-width: 560px) {
       .heroName { padding-left: 0 !important; margin-top: 46px !important; }
       .heroName h1 { font-size: 40px !important; }
+      .heroClose > p.serif { font-size: 27px !important; }
       .rt { grid-template-columns: 1fr !important; }
     }
 '''
