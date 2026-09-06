@@ -86,6 +86,8 @@ HOOKS = [
      '<div class="chipRow" style="display: flex; gap: 9px; flex-shrink: 0; padding-bottom: 6px;">'),
     ('<div style="display: flex; align-items: center; gap: 14px; margin-bottom: 30px;">',
      '<div class="kicker" style="display: flex; align-items: center; gap: 14px; margin-bottom: 30px;">'),
+    ('<p class="serif" style="margin: 0 auto; max-width: 28em;',
+     '<p class="serif epigraph" style="margin: 0 auto; max-width: 28em;'),
 ]
 for a, b in HOOKS:
     body = body.replace(a, b)
@@ -110,7 +112,8 @@ EXTRA = '''
       .rm > div:nth-child(2n) { border-right: none !important; }
       .rm > div:nth-child(n+3) { border-bottom: none !important; }
       .secHead { flex-wrap: wrap !important; gap: 26px !important; }
-      .chipRow { flex-wrap: wrap; padding-bottom: 0 !important; }
+      .chipRow { flex-wrap: wrap; flex-shrink: 1 !important; width: 100%; padding-bottom: 0 !important; }
+      .epigraph { white-space: normal !important; text-wrap: pretty !important; max-width: 100% !important; font-size: 24px !important; }
       .navLinks { gap: 20px !important; }
       .navLinks .navlink { font-size: 12.5px !important; }
       .tabRow { flex-wrap: wrap; }
@@ -130,6 +133,7 @@ EXTRA = '''
       .card > div { padding: 26px 22px !important; }
       .card.rc > div:first-child { padding: 22px 22px 0 !important; }
       .chip { min-height: 44px; display: inline-flex; align-items: center; }
+      .epigraph { font-size: 20px !important; line-height: 1.8 !important; }
       .kicker { gap: 9px !important; margin-bottom: 22px !important; }
       .kicker .mono { font-size: 8.5px !important; letter-spacing: .12em !important; white-space: nowrap; }
       .btn { height: 48px; }
