@@ -162,9 +162,6 @@
       <span class="rule"></span>
       <span class="mono" style="font-size: 10px; color: var(--fg3);">SELECTED WORKS</span>
     </div>
-    <h2 class="serif" style="margin: 0 0 12px; font-size: 32px; font-weight: 900; line-height: 1.22; color: var(--fg);">先做出来，<br>再讲道理。</h2>
-    <p style="margin: 0 0 24px; font-size: 14px; line-height: 1.85; color: var(--fg2);">五个号，五个领域。号写判断，底下挂的产品干活。</p>
-
     <div style="display: flex; gap: 8px; margin-bottom: 22px; flex-wrap: wrap;">
       <div class="chip" onClick="{{go.sBit}}">01 观察局</div>
       <div class="chip" onClick="{{go.sNeo}}">02 造物集</div>
@@ -449,46 +446,16 @@
       <span class="rule"></span>
       <span class="mono" style="font-size: 10px; color: var(--fg3);">CONTENT SYSTEM</span>
     </div>
-    <h2 class="serif" style="margin: 0 0 12px; font-size: 32px; font-weight: 900; line-height: 1.22; color: var(--fg);">四个号，<br>一条主线。</h2>
-    <p style="margin: 0 0 22px; font-size: 14px; line-height: 1.85; color: var(--fg2);">平台不一样，写的其实是同一件事：看到了什么，想明白了什么，然后动手做了什么。</p>
+    <h2 class="serif" style="margin: 0 0 12px; font-size: 32px; font-weight: 900; line-height: 1.22; color: var(--fg);">三个地方，<br>三种长度。</h2>
+    <p style="margin: 0 0 22px; font-size: 14px; line-height: 1.85; color: var(--fg2);">X 放还没想清楚的半成品，GitHub 放能跑的东西，B 站放讲出来比写出来清楚的那些。</p>
 
     <div style="display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap;">
-      <div class="chip {{ch.wechat}}" onClick="{{tab.wechat}}">公众号</div>
       <div class="chip {{ch.x}}" onClick="{{tab.x}}">X</div>
       <div class="chip {{ch.gh}}" onClick="{{tab.gh}}">GitHub</div>
-      <div class="chip {{ch.xhs}}" onClick="{{tab.xhs}}">小红书</div>
+      <div class="chip {{ch.bili}}" onClick="{{tab.bili}}">B 站</div>
     </div>
 
     <div class="card" style="padding: 24px 20px 26px;">
-      <sc-if value="{{on.wechat}}" hint-placeholder-val="{{ true }}">
-      <div>
-        <h3 class="serif" style="margin: 0 0 12px; font-size: 21px; font-weight: 600; color: var(--fg);">建造观察局</h3>
-        <p style="margin: 0 0 18px; font-size: 13.5px; line-height: 1.9; color: var(--fg2);">主阵地。长文写行业里正在变的部分：技术进到工地要过几道关、一个新工具是真省事还是换个地方费事、哪些判断我三个月后改了口。不追热点，只写能放半年还成立的东西。</p>
-        <div style="display: flex; flex-direction: column; gap: 9px;">
-          <div class="linkrow"><span style="font-size: 13.5px; color: var(--fg);">建筑观察</span><span class="mono" style="font-size: 9px; color: var(--fg3);">行业在变什么</span></div>
-          <div class="linkrow"><span style="font-size: 13.5px; color: var(--fg);">AI 工具</span><span class="mono" style="font-size: 9px; color: var(--fg3);">用过才写</span></div>
-          <div class="linkrow"><span style="font-size: 13.5px; color: var(--fg);">造物实验</span><span class="mono" style="font-size: 9px; color: var(--fg3);">做坏的也写</span></div>
-          <div class="linkrow"><span style="font-size: 13.5px; color: var(--fg);">适老 &amp; 生活</span><span class="mono" style="font-size: 9px; color: var(--fg3);">给家里人做的</span></div>
-        </div>
-      </div>
-      </sc-if>
-      <sc-if value="{{on.xhs}}" hint-placeholder-val="{{ false }}">
-      <div>
-        <h3 class="serif" style="margin: 0 0 12px; font-size: 21px; font-weight: 600; color: var(--fg);">牛师傅 | neohoy</h3>
-        <p style="margin: 0 0 18px; font-size: 13.5px; line-height: 1.9; color: var(--fg2);">图文为主。公众号写清楚「为什么」，小红书负责给出「长什么样」——手绘草图、过程照、做到一半的样子。</p>
-        <div style="display: flex; align-items: center; gap: 11px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 3px; background: var(--bg3); margin-bottom: 16px;">
-          <span class="mono" style="font-size: 9px; color: var(--fg3);">小红书号</span>
-          <span class="mono" style="font-size: 14px; color: var(--fg); letter-spacing: .08em;">9567321987</span>
-        </div>
-        <div style="display: flex; flex-wrap: wrap; gap: 7px;">
-          <span class="chip" style="cursor: default; min-height: 0; padding: 7px 11px;">#AI</span>
-          <span class="chip" style="cursor: default; min-height: 0; padding: 7px 11px;">#建筑科技</span>
-          <span class="chip" style="cursor: default; min-height: 0; padding: 7px 11px;">#造物集</span>
-          <span class="chip" style="cursor: default; min-height: 0; padding: 7px 11px;">#适老化设计</span>
-          <span class="chip" style="cursor: default; min-height: 0; padding: 7px 11px;">#文创</span>
-        </div>
-      </div>
-      </sc-if>
       <sc-if value="{{on.x}}" hint-placeholder-val="{{ false }}">
       <div>
         <h3 class="serif" style="margin: 0 0 12px; font-size: 21px; font-weight: 600; color: var(--fg);">牛老 | neohoy</h3>
@@ -509,6 +476,16 @@
           <div class="linkrow"><span style="font-size: 13.5px; color: var(--fg);">codexbook</span><span class="mono" style="font-size: 9px; color: var(--fg3);">133 DOCS</span></div>
           <div class="linkrow"><span style="font-size: 13.5px; color: var(--fg);">workbuddybook</span><span class="mono" style="font-size: 9px; color: var(--fg3);">38 DOCS</span></div>
           <div class="linkrow"><span style="font-size: 13.5px; color: var(--fg);">RPG-Maker-MV</span><span class="mono" style="font-size: 9px; color: var(--fg3);">131 DOCS</span></div>
+        </div>
+      </div>
+      </sc-if>
+      <sc-if value="{{on.bili}}" hint-placeholder-val="{{ false }}">
+      <div>
+        <h3 class="serif" style="margin: 0 0 12px; font-size: 21px; font-weight: 600; color: var(--fg);">B 站</h3>
+        <p style="margin: 0 0 18px; font-size: 13.5px; line-height: 1.9; color: var(--fg2);">有些东西讲出来比写出来清楚——工具怎么用、方案怎么改、一件东西从图纸到做完中间发生了什么。写不动的部分放这儿。</p>
+        <div class="linkrow dashed" style="cursor: default;">
+          <span style="font-size: 13px; color: var(--fg3);">[ 填 B 站主页地址 ]</span>
+          <span class="ph">待填</span>
         </div>
       </div>
       </sc-if>
@@ -555,7 +532,7 @@
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { channel: 'wechat', menu: false };
+    this.state = { channel: 'x', menu: false };
   }
 
   scrollTo(id) {
@@ -579,13 +556,12 @@ class Component extends DCLogic {
         sAnxin: () => this.scrollTo('series-anxin'),
         sStore: () => this.scrollTo('series-store')
       },
-      ch: { wechat: chan('wechat'), xhs: chan('xhs'), x: chan('x'), gh: chan('gh') },
-      on: { wechat: c === 'wechat', xhs: c === 'xhs', x: c === 'x', gh: c === 'gh' },
+      ch: { x: chan('x'), gh: chan('gh'), bili: chan('bili') },
+      on: { x: c === 'x', gh: c === 'gh', bili: c === 'bili' },
       tab: {
-        wechat: () => this.setState({ channel: 'wechat' }),
-        xhs: () => this.setState({ channel: 'xhs' }),
         x: () => this.setState({ channel: 'x' }),
-        gh: () => this.setState({ channel: 'gh' })
+        gh: () => this.setState({ channel: 'gh' }),
+        bili: () => this.setState({ channel: 'bili' })
       }
     };
   }

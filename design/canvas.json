@@ -5,7 +5,7 @@
       "x": 0,
       "y": 0,
       "w": 1440,
-      "h": 7800,
+      "h": 7500,
       "title": "首页 · 桌面",
       "expand": "fill",
       "is_interactive": true
@@ -15,7 +15,7 @@
       "x": 1560,
       "y": 0,
       "w": 390,
-      "h": 10200,
+      "h": 9800,
       "title": "首页 · 手机",
       "is_interactive": true
     },

@@ -40,15 +40,18 @@ FILTERS = re.findall(r'class="chip \{\{sel\.(\w+)\}\}"', body)
 for k in FILTERS:
     body = body.replace('class="chip {{sel.%s}}" onClick="{{pick.%s}}"' % (k, k),
                         'class="chip" data-filter="%s"' % k)
-for k in ('wechat', 'xhs', 'x', 'gh'):
+# 频道不写死，从设计稿里读出来
+CHANNELS = re.findall(r'class="tab \{\{ch\.(\w+)\}\}"', body)
+for k in CHANNELS:
     body = body.replace('class="tab {{ch.%s}}" onClick="{{tab.%s}}"' % (k, k),
                         'class="tab" data-tab="%s"' % k)
 for k in [f for f in FILTERS if f != 'all']:
     body = body.replace('<sc-if value="{{show.%s}}" hint-placeholder-val="{{ true }}">' % k,
                         '<div class="grp" data-work="%s">' % k)
-for k in ('wechat', 'xhs', 'x', 'gh'):
-    body = body.replace('<sc-if value="{{on.%s}}" hint-placeholder-val="{{ true }}">' % k,
-                        '<div class="grp" data-panel="%s">' % k)
+for k in CHANNELS:
+    for hint in ('true', 'false'):
+        body = body.replace('<sc-if value="{{on.%s}}" hint-placeholder-val="{{ %s }}">' % (k, hint),
+                            '<div class="grp" data-panel="%s">' % k)
 body = body.replace('</sc-if>', '</div>')
 if '{{' in body:
     raise SystemExit('未解析的模板洞: ' + body[body.index('{{'):body.index('{{') + 120])
@@ -150,7 +153,7 @@ EXTRA = '''
 
 JS = '''
   (function () {
-    var state = { filter: 'all', panel: 'wechat' };
+    var state = { filter: 'all', panel: '__FIRST_CHANNEL__' };
 
     function paintWorks() {
       document.querySelectorAll('[data-filter]').forEach(function (c) {
@@ -190,6 +193,8 @@ JS = '''
 FAVICON = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' "
            "stroke='%233B7BE8' stroke-width='1.6' stroke-linecap='square'%3E%3Cpath d='M3 21h18'/%3E"
            "%3Cpath d='M6 21V9l6-4.5L18 9v12'/%3E%3Cpath d='M10 21v-6h4v6'/%3E%3Cpath d='M12 4.5V2'/%3E%3C/svg%3E")
+
+JS = JS.replace('__FIRST_CHANNEL__', CHANNELS[0] if CHANNELS else '')
 
 html = f'''<!doctype html>
 <html lang="zh-CN">
