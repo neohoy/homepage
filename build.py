@@ -115,6 +115,13 @@ EXTRA = '''
       .rm > div:nth-child(2n) { border-right: none !important; }
       .rm > div:nth-child(n+3) { border-bottom: none !important; }
       .secHead { flex-wrap: wrap !important; gap: 26px !important; }
+      /* 作品行：窄屏改成纵向堆叠 —— 横向 flex 会把中间那栏挤到一字一行 */
+      .workrow { flex-wrap: wrap !important; gap: 12px !important; padding: 20px 20px !important; }
+      .workrow > div:first-of-type { flex: 1 1 100% !important; order: 2; }
+      .workrow .rownum { width: auto !important; order: 1; }
+      .workrow .rowtags { order: 3; max-width: 100% !important; justify-content: flex-start !important; }
+      .workrow .arrow { order: 4; margin-left: auto; }
+      .grouphead > div { flex-wrap: wrap !important; }
       .chipRow { flex-wrap: wrap; flex-shrink: 1 !important; width: 100%; padding-bottom: 0 !important; }
       .epigraph { white-space: normal !important; text-wrap: pretty !important; max-width: 100% !important; font-size: 24px !important; }
       .heroClose > p.serif { font-size: 44px !important; }
@@ -137,6 +144,8 @@ EXTRA = '''
       .card > div { padding: 26px 22px !important; }
       .card.rc > div:first-child { padding: 22px 22px 0 !important; }
       .chip { min-height: 44px; display: inline-flex; align-items: center; }
+      .grouphead h3 { font-size: 24px !important; }
+      .workrow > div:first-of-type > div > span:first-of-type { font-size: 16px !important; }
       .epigraph { font-size: 20px !important; line-height: 1.8 !important; }
       .heroClose > p.serif { font-size: 32px !important; white-space: normal !important; line-height: 1.36 !important; }
       .kicker { gap: 9px !important; margin-bottom: 22px !important; }

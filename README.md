@@ -49,3 +49,27 @@ bitbuild.cc 接上 Cloudflare 之后把它改成 `https://bitbuild.cc/`，重新
 不用改脚本；页面引用了但 `design/` 里没有的图会让构建直接失败，避免线上碎图。
 
 原始大图放 `design/_source/`（子目录不参与打包），例如横幅的 webp 原件。
+
+## 改完怎么验移动端
+
+只查横向溢出**不够**。`.workrow` 那次翻车就是：横向 flex 在窄屏把中间那栏
+挤到二十来像素，文字一行一个字，但每个元素的 `right` 都在视口内，
+`scrollWidth == clientWidth`，按溢出查是"全绿"的。
+
+两种失效要分开查：
+
+- **溢出** —— `document.documentElement.scrollWidth > clientWidth`。
+  注意 `white-space: nowrap` 的文字溢出不撑大盒子，用 `getBoundingClientRect`
+  查不出来，只有 `scrollWidth` 会暴露。
+- **挤扁** —— 量正文容器的实际宽度和行数。在 390px 下，`.workrow p` 应该
+  接近 300px 宽、三五行；如果只有几十像素、几十行，就是被挤了。
+
+```js
+const ps = [...document.querySelectorAll('.workrow p')];
+ps.map(p => ({
+  w: Math.round(p.getBoundingClientRect().width),
+  lines: Math.round(p.getBoundingClientRect().height / parseFloat(getComputedStyle(p).lineHeight)),
+})).filter(x => x.w < 200)   // 应该是空数组
+```
+
+四个宽度都要过：390 / 768 / 1024 / 1400。
