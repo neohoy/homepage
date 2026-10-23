@@ -1,75 +1,84 @@
 # 牛叔 · 个人主页
 
-[bitbuild.cc](https://bitbuild.cc) 的源码。零依赖静态站，一个 `index.html` 加两张图，整站 272KB。
+零依赖静态个人主页。当前版本采用暖白纸感、叠放作品册、独立品牌铭牌与书柜展台，以牛叔 / neohoy 的个人身份承接建筑科技、AI 与造物实践。
 
-## 目录
+## 维护与构建
 
-```
-design/     设计稿（Claude Design 画布的 .dc.html 源文件）
-dist/       构建产物，部署的就是这个目录
-build.py    design/Main.dc.html → dist/index.html
-```
+- `design/Main.dc.html`：当前正文、样式和设计画布逻辑。
+- `build.py`：解析设计模板，补上筛选交互、站点元数据，生成静态站。
+- `dist/`：部署目录。不要直接编辑，构建会覆盖。
+- `design/Mobile.dc.html`、`design/System.dc.html`：旧版视觉参考，不参与当前构建；当前移动端由 Main 的响应式样式实现。
+- `niushu-ip-homepage.html`：旧设计工具导出文件，不参与构建。
 
-## 改内容
-
-正文、作品卡、联系方式这些都在 `design/Main.dc.html` 里。改完跑：
+修改 Main 后运行：
 
 ```bash
 python3 build.py
+python3 -m http.server 8947 --bind 127.0.0.1 --directory dist
 ```
 
-会重新生成 `dist/index.html` 并同步图片。**不要直接改 `dist/index.html`**，下次构建会覆盖。
+本地预览：<http://127.0.0.1:8947/>。
 
-`design/Mobile.dc.html` 和 `design/System.dc.html` 只是设计参考（手机版视觉稿、设计系统），不参与构建——线上站是响应式的，一套代码适配。
+构建会检查标签配对、重复 id、站内锚点、图片、空链接和外链属性。页面不依赖远程字体或前端框架，直接打开 `dist/index.html` 也可查看。
 
-## 部署
+## 品牌与内容关系
 
-两条流水线并存，推 `main` 都会自动触发：
-
-| 平台 | 地址 | 配置 |
+| 英文标识 | 中文品牌 | 内容 |
 | --- | --- | --- |
-| Cloudflare Pages | bitbuild.cc | 构建命令留空，输出目录 `dist` |
-| GitHub Pages | neohoy.github.io/homepage | `.github/workflows/deploy.yml` |
+| Bit Build | 建造观察局 | 建筑科技与 AI 的行业观察、公众号、行业网站 |
+| NEO Creative | 造物集 | AI 内容、创作实践、手册书柜、创作 Skill、数字项目 |
+| Game Makers | 游戏学社 | RPG Maker 中文资料与游戏制作社群 |
+| Mu Shop | 明木趣玩 | 木质轨道、玩具选品与销售 |
+| Strait Connect | 海峡助手 | 两岸信息、公众号、小程序 |
 
-自定义域名只能指向一个，打算给 Cloudflare。GitHub Pages 那个当备用镜像。
+- Leaf Notes 一叶茶记与安心爸妈家先归到 NEO Creative，标明制作中。
+- 创作 Skill 归到 NEO Creative。NEO 手绘动画（MV Skill）已公开，入口为 `https://github.com/neohoy/neo-handdrawn-motion`；写书（书柜配套）、视频制作、宣传片、创意图片、IP 设计技能目前内部使用，计划陆续公开。尚无技能集合网站，不展示为已上线站点。
+- 明木造物作为文创与定制木玩方向展示，标明筹备中。英文名称暂未确定，不自行填入 Mu Studio。
+- 协会使用中文正式名称，列为海峡助手的关联机构，不自行确认英文名称或 CCSA 缩写。
+- 抖音、小红书、B 站、X 是个人综合内容渠道。
+- 不把网站展示名称变更视作外部账号、商店或域名已经改名。
 
-站点对外地址（canonical、og 卡片用）在 `build.py` 顶部的 `SITE` 常量里。
-bitbuild.cc 接上 Cloudflare 之后把它改成 `https://bitbuild.cc/`，重新构建即可。
-现在指向 GitHub Pages —— bitbuild.cc 还没解析到站上，canonical 不能指死链。
+## 关注与社群数字
 
-## 待补
+按用户 2026-10-24 提供的信息显示：建造观察局公众号 5000+，NEO造物集公众号 1000+，游戏群 2000+，B 站 1500+。数字分别放在对应品牌、社群和渠道，不汇总成站点访问人数。
 
-- 联系区的微信二维码（现在是制图占位框）
-- NEO 造物集的成品实拍图
-- 核心指标里公众号读者数与 GitHub Stars 需要定期更新
+行业网站、Yanfly 中文文档、商店独立站采用整张可点击的资源入口卡片，保留原有真实地址。
+
+## 游戏学社
+
+展示 Yanfly 官方授权的插件文档中文翻译与整理，不再展示 MV 帮助入口。社群保留实际群名 Game Maker Monster School，QQ群号 744013203，提供复制按钮；人数按 2026-10-24 用户提供的信息显示为 2000+ 人。更完整的 RPG Maker 插件站标为制作中。
+
+## 书柜
+
+本次核对书柜数据源：`/Users/mac/06项目/NEO造物/产品/手册/在线站点/bookshelf/src/books.js`。
+
+当前六本：大模型、Claude Code、Codex、豆包、WorkBuddy、OpenDesign。主入口指向现有立体书柜，首页每张手册卡片分别提供阅读正文与导航站两个入口。五本整书直达书柜的 `/books/<id>.html`，大模型手册从入门篇第一篇正文开始，导航站仍使用各站首页。
+
+在 Main 的 `.book-grid` 中增减带 `data-book-id` 的条目；构建时根据这些条目统一生成各处册数。书柜本身仍由原工程维护，首页截图也需要在书柜明显变化时更新。
 
 ## 图片
 
-`design/` 顶层的图片会被 `build.py` 全量同步到 `dist/`，加新图直接放进去即可，
-不用改脚本；页面引用了但 `design/` 里没有的图会让构建直接失败，避免线上碎图。
+`design/` 顶层图片会同步到 `dist/`。当前使用 `avatar.jpg`、`banner.jpg`、`bookshelf.png`，以及 `wechat-bitbuild.jpg`、`wechat-neo.jpg`、`wechat-strait.jpg` 三张公众号二维码原图。旧 `wechat-qr.jpg` 保留为历史资产，不再由当前页面引用。原始大图放在 `design/_source/`，子目录不参与构建。
 
-原始大图放 `design/_source/`（子目录不参与打包），例如横幅的 webp 原件。
+`bookshelf.png` 来源于本次已访问的真实书柜截图。三张公众号二维码使用用户提供的原始 JPEG，完整复制，不裁切或重绘；展开公众号入口后可查看，点击图片可打开原图。海峡助手下标明扫码关注的是协会公众号。
 
-## 改完怎么验移动端
+## 待补入口
 
-只查横向溢出**不够**。`.workrow` 那次翻车就是：横向 flex 在窄屏把中间那栏
-挤到二十来像素，文字一行一个字，但每个元素的 `right` 都在视口内，
-`scrollWidth == clientWidth`，按溢出查是"全绿"的。
+抖音、小红书、B 站、抖店、虾皮、海峡助手小程序尚未拿到明确的公开链接，页面只展示名称或项目说明，不设置空按钮。X 与邮箱沿用旧主页已有地址；发布前宜由本人确认。
 
-两种失效要分开查：
+## 验证
 
-- **溢出** —— `document.documentElement.scrollWidth > clientWidth`。
-  注意 `white-space: nowrap` 的文字溢出不撑大盒子，用 `getBoundingClientRect`
-  查不出来，只有 `scrollWidth` 会暴露。
-- **挤扁** —— 量正文容器的实际宽度和行数。在 390px 下，`.workrow p` 应该
-  接近 300px 宽、三五行；如果只有几十像素、几十行，就是被挤了。
+内容调整记录在 `research/2026-10-23-个人定位与作品盘点/主页调整/`；当前白色视觉版本的检查脚本、截图与调整前备份在 `research/2026-10-24-白色纸感/`。
 
-```js
-const ps = [...document.querySelectorAll('.workrow p')];
-ps.map(p => ({
-  w: Math.round(p.getBoundingClientRect().width),
-  lines: Math.round(p.getBoundingClientRect().height / parseFloat(getComputedStyle(p).lineHeight)),
-})).filter(x => x.w < 200)   // 应该是空数组
-```
+检查四种宽度：390 / 768 / 1024 / 1400。横向溢出与段落挤扁分别检查，并验证项目筛选、品牌锚点、公众号展开、手机菜单和书柜册数。
 
-四个宽度都要过：390 / 768 / 1024 / 1400。
+## 部署
+
+现有两条流水线保留，推送 `main` 会触发 GitHub Pages 部署。发布前运行 `python3 build.py` 并同步提交源文件、图片和 `dist/`，部署成功后回查线上页面。Cloudflare 流水线仅在仓库变量 `CLOUDFLARE_ENABLED=true` 且已配置所需凭据时运行。
+
+| 平台 | 地址 | 配置 |
+| --- | --- | --- |
+| Cloudflare Pages（预留配置） | bitbuild.cc | 输出目录 `dist`，需启用仓库变量与凭据，不能据配置认定域名已上线 |
+| GitHub Pages | neohoy.github.io/homepage | `.github/workflows/deploy.yml` |
+
+canonical 和分享卡片地址由 `build.py` 的 `SITE` 配置，当前保留原有 GitHub Pages 地址。正式域名切换需要另行核实后修改。
