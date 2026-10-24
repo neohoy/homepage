@@ -186,7 +186,7 @@ html = f'''<!doctype html>
 <meta property="og:title" content="{TITLE}">
 <meta property="og:description" content="{DESCRIPTION}">
 <meta property="og:image" content="{SITE}banner.jpg">
-<meta property="og:image:alt" content="观察世界，也创造世界。牛叔的建筑科技、AI 与造物工作台。">
+<meta property="og:image:alt" content="观察变化，参与其中。牛叔的建筑科技、AI 与造物工作台。">
 <meta property="og:url" content="{SITE}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@neohoy77">
