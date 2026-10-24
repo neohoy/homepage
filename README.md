@@ -50,6 +50,8 @@ python3 -m http.server 8947 --bind 127.0.0.1 --directory dist
 
 ## 书柜
 
+书柜是 NEO Creative 的核心作品，在创作 Skill 之前以独立卡片展示，并链接到下方完整书柜展区。
+
 本次核对书柜数据源：`/Users/mac/06项目/NEO造物/产品/手册/在线站点/bookshelf/src/books.js`。
 
 当前六本：大模型、Claude Code、Codex、豆包、WorkBuddy、OpenDesign。主入口指向现有立体书柜，首页每张手册卡片分别提供阅读正文与导航站两个入口。五本整书直达书柜的 `/books/<id>.html`，大模型手册从入门篇第一篇正文开始，导航站仍使用各站首页。
