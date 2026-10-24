@@ -17,7 +17,7 @@ ACCENT = '#2855D9'
 # Cloudflare Pages 的正式域名；GitHub Pages 保留为备用入口。
 SITE = 'https://neo.bitbuild.cc/'
 TITLE = '牛叔 neohoy — 建筑科技、AI 与造物'
-DESCRIPTION = '牛叔 / neohoy，内容创作者与独立开发者。建筑科技与 AI 的观察、持续更新的手册书柜、游戏制作资料、木质玩具，以及正在制作的网站与小程序。'
+DESCRIPTION = '牛叔 / neohoy，建筑科技、AI 创作与造物实践。行业观察、持续更新的手册书柜、游戏制作资料、木质玩具，以及正在制作的网站与小程序。'
 
 src = (SRC / 'Main.dc.html').read_text(encoding='utf-8')
 css = src[src.index('<style>') + 7:src.index('</style>')]
