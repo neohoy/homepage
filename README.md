@@ -60,9 +60,15 @@ python3 -m http.server 8947 --bind 127.0.0.1 --directory dist
 
 ## 图片
 
-`design/` 顶层图片会同步到 `dist/`。当前使用 `avatar.jpg`、`banner.jpg`、`bookshelf.png`，以及 `wechat-bitbuild.jpg`、`wechat-neo.jpg`、`wechat-strait.jpg` 三张公众号二维码原图。旧 `wechat-qr.jpg` 保留为历史资产，不再由当前页面引用。原始大图放在 `design/_source/`，子目录不参与构建。
+`design/` 顶层图片会同步到 `dist/`。当前使用 `avatar.jpg`、`banner.jpg`、`bookshelf.png`，以及 `wechat-bitbuild.jpg`、`wechat-neo.jpg`、`wechat-strait.jpg` 三张公众号二维码原图。个人微信使用 `wechat-personal-qr.png`，放在页面最后的联系区，可点击放大。旧 `wechat-qr.jpg` 为建造观察局公众号历史资产，不作为个人微信使用。原始大图放在 `design/_source/`，子目录不参与构建。
+
+个人微信图按用户要求从原图裁出二维码和四周白边：裁剪区域 x=96、y=264、宽高 696 像素，不含上方头像、名字、地区或下方说明。输出 PNG 未缩放或重绘，已核对裁剪范围内的像素与原图一致；原图保存在 `design/_source/wechat-personal-original.jpg`。
 
 `bookshelf.png` 来源于本次已访问的真实书柜截图。三张公众号二维码使用用户提供的原始 JPEG，完整复制，不裁切或重绘；展开公众号入口后可查看，点击图片可打开原图。海峡助手下标明扫码关注的是协会公众号。
+
+产品小插画使用 8 张 `product-*-v1.webp`：行业网站、书柜、创作 Skill、一叶茶记、安心爸妈家、游戏资料、木质玩具、海峡服务。由内置图片生成工具独立生成，各图 640 × 427，保留透明背景并延迟加载，总计约 659 KiB。原始 PNG 保存在本地 `design/_source/product-illustrations-v1/`，提示词、文件清单与视觉检查在本地 `research/2026-10-24-产品小插画/`。这些是项目主题插画，不是产品实拍或网站截图。
+
+当前作品册卡片直接沿用首屏的结构：外层错位底板与橙色索引签，内层暖白渐变纸张、双纸边与分层投影，保留全页 3.5% 轻噪点。卡片保持紧凑，行业网站用稍大的标题与蓝色圆章突出；书柜仍在 NEO Creative 的 Skill 前。`paper-cotton-v1.webp` 为本地历史材质试样，当前页面不再引用、不随本次发布。方案与截图见本地 `research/2026-10-24-产品小插画/作品册卡片设计.md`。
 
 ## 待补入口
 
