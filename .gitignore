@@ -4,4 +4,5 @@
 .DS_Store
 .design-base
 __pycache__/
+.wrangler/
 niushu-ip-homepage.html

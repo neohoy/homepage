@@ -3,7 +3,8 @@ name: Deploy to Cloudflare Pages
 # 需要两个仓库 secret 才会跑（Settings → Secrets and variables → Actions）：
 #   CLOUDFLARE_API_TOKEN   —— 权限选 "Cloudflare Pages: Edit"
 #   CLOUDFLARE_ACCOUNT_ID  —— Cloudflare 控制台右侧栏能看到
-# 没配 secret 时整个 job 直接跳过，不会让 CI 变红。
+# 另需仓库变量 CLOUDFLARE_ENABLED=true；当前未启用，使用本机部署脚本发布。
+# 未启用时整个 job 直接跳过，不会让 CI 变红。
 
 on:
   push:

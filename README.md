@@ -82,11 +82,23 @@ python3 -m http.server 8947 --bind 127.0.0.1 --directory dist
 
 ## 部署
 
-现有两条流水线保留，推送 `main` 会触发 GitHub Pages 部署。发布前运行 `python3 build.py` 并同步提交源文件、图片和 `dist/`，部署成功后回查线上页面。Cloudflare 流水线仅在仓库变量 `CLOUDFLARE_ENABLED=true` 且已配置所需凭据时运行。
+正式站已于 2026-10-24 通过 Wrangler 发布到 Cloudflare Pages，项目为 `homepage`，生产分支为 `main`。`neo.bitbuild.cc` 在 Spaceship DNS 中通过 CNAME 指向 `homepage-7cr.pages.dev`，不需要迁移整个域名的名称服务器。
 
 | 平台 | 地址 | 配置 |
 | --- | --- | --- |
-| Cloudflare Pages（预留配置） | bitbuild.cc | 输出目录 `dist`，需启用仓库变量与凭据，不能据配置认定域名已上线 |
-| GitHub Pages | neohoy.github.io/homepage | `.github/workflows/deploy.yml` |
+| Cloudflare Pages 正式域名 | <https://neo.bitbuild.cc/> | 项目 `homepage`，生产分支 `main` |
+| Cloudflare Pages 默认域名 | <https://homepage-7cr.pages.dev/> | 与正式域名提供同一生产版本 |
+| GitHub Pages 备用入口 | <https://neohoy.github.io/homepage/> | `.github/workflows/deploy.yml`，推送 `main` 后自动发布 |
 
-canonical 和分享卡片地址由 `build.py` 的 `SITE` 配置，当前保留原有 GitHub Pages 地址。正式域名切换需要另行核实后修改。
+修改后先运行 `python3 build.py`，将源文件、图片和 `dist/` 一起提交，再发布 Cloudflare：
+
+```bash
+python3 scripts/deploy-cloudflare.py --check
+python3 scripts/deploy-cloudflare.py
+```
+
+脚本使用本机 Wrangler 的既有登录。需要重新登录时运行 `npx --yes wrangler@4 login`，不将登录凭据提交到仓库。脚本会重新构建，核对构建文件与当前提交一致，只将已提交的 `dist/` 文件放入临时上传目录；本地研究资料、二维码原图和未入库的纹理试样不会上传。
+
+Cloudflare 的 GitHub Actions 流水线仍未启用，因此推送 GitHub 不会自动更新 Cloudflare。未来配置 `CLOUDFLARE_API_TOKEN`、`CLOUDFLARE_ACCOUNT_ID` 和仓库变量 `CLOUDFLARE_ENABLED=true` 后才会自动发布。
+
+canonical 和分享卡片地址由 `build.py` 的 `SITE` 配置，当前为 `https://neo.bitbuild.cc/`。发布后回查正式域名的 HTTPS、页面与图片，并核对线上 HTML 与本地 `dist/index.html` 的 SHA-256；本次验收记录在本地 `research/2026-10-24-Cloudflare发布/`。
