@@ -29,12 +29,13 @@ python3 -m http.server 8947 --bind 127.0.0.1 --directory dist
 | NEO Creative | 造物集 | AI 内容、创作实践、手册书柜、创作 Skill、数字项目 |
 | Game Makers | 游戏学社 | RPG Maker 中文资料与游戏制作社群 |
 | Mu Shop | 明木趣玩 | 木质轨道、玩具选品与销售 |
-| Strait Connect | 海峡助手 | 两岸信息、公众号、小程序 |
+| Strait Connect | 海峡助手 | 台胞政策网站、两岸信息、公众号、小程序 |
 
 - Leaf Notes 一叶茶记与安心爸妈家先归到 NEO Creative，标明制作中。
 - 创作 Skill 归到 NEO Creative。NEO 手绘动画（MV Skill）已公开，入口为 `https://github.com/neohoy/neo-handdrawn-motion`；写书（书柜配套）、视频制作、宣传片、创意图片、IP 设计技能目前内部使用，计划陆续公开。尚无技能集合网站，不展示为已上线站点。
 - 明木造物作为文创与定制木玩方向展示，标明筹备中。英文名称暂未确定，不自行填入 Mu Studio。
 - 协会使用中文正式名称，列为海峡助手的关联机构，不自行确认英文名称或 CCSA 缩写。
+- 海峡助手网站入口为 <https://strait.bitbuild.cc/>，目前展示台胞政策与办事资讯；旅游资讯、交流活动等仍在筹备，不作为已上线功能宣传。
 - 抖音、小红书、B 站、X 是个人综合内容渠道。
 - 不把网站展示名称变更视作外部账号、商店或域名已经改名。
 
